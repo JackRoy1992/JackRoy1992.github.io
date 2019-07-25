@@ -1,0 +1,694 @@
+<html>
+  <head>
+	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>i5ting_ztree_toc:笔试题</title>
+		<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css"/>
+	  <style>
+		pre {
+		    counter-reset: line-numbering;
+		    border: solid 1px #d9d9d9;
+		    border-radius: 0;
+		    background: #fff;
+		    padding: 0;
+		    line-height: 23px;
+		    margin-bottom: 30px;
+		    white-space: pre;
+		    overflow-x: auto;
+		    word-break: inherit;
+		    word-wrap: inherit;
+		}
+
+		pre a::before {
+		  content: counter(line-numbering);
+		  counter-increment: line-numbering;
+		  padding-right: 1em; /* space after numbers */
+		  width: 25px;
+		  text-align: right;
+		  opacity: 0.7;
+		  display: inline-block;
+		  color: #aaa;
+		  background: #eee;
+		  margin-right: 16px;
+		  padding: 2px 10px;
+		  font-size: 13px;
+		  -webkit-touch-callout: none;
+		  -webkit-user-select: none;
+		  -khtml-user-select: none;
+		  -moz-user-select: none;
+		  -ms-user-select: none;
+		  user-select: none;
+		}
+
+		pre a:first-of-type::before {
+		  padding-top: 10px;
+		}
+
+		pre a:last-of-type::before {
+		  padding-bottom: 10px;
+		}
+
+		pre a:only-of-type::before {
+		  padding: 10px;
+		}
+
+		.highlight { background-color: #ffffcc } /* RIGHT */
+		</style>
+  </head>
+  <body>
+	  <div>
+				<div style='width:25%;'>
+						<ul id="tree" class="ztree" style='width:100%'>
+
+						</ul>
+				</div>
+        <div id='readme' style='width:70%;margin-left:20%;'>
+          	<article class='markdown-body'>
+            	<h1 id="1-30-">1-30 题</h1>
+<h2 id="-jq-js-div-pc-">请用 jq 或者原生 js 操作一个 div 在 pc 和移动的浏览器屏幕中纵向、横向居中。</h2>
+<pre><code class="lang-js">  &lt;style&gt;
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+    }
+  &lt;/style&gt;
+  &lt;div class=&quot;box&quot;&gt;&lt;/div&gt;
+  &lt;script&gt;
+    window.onload = function() {
+      let height = document.body.scrollHeight
+      let width = document.body.scrollWidth
+      let box = document.querySelector(&#39;.box&#39;)
+      let margin_top = (height - 100) / 2
+      let margin_left = (width - 100) / 2
+      box.style.marginTop = margin_top + &#39;px&#39;
+      box.style.marginLeft = margin_left + &#39;px&#39;
+    }
+  &lt;/script&gt;
+</code></pre>
+<h2 id="-js-">请用 js 去除字符串的空格</h2>
+<pre><code class="lang-js">function trimAll(str) {
+  return str.replace(/\s+/g, &#39;&#39;)
+}
+trimAll(&#39;   he ll o  wo  r ld    &#39;)
+</code></pre>
+<h2 id="-css3-">请写出需要在开发时做兼容的 css3 新属性</h2>
+<p>· border-radius · border-image · box-shadow · text-shadow · background-size · background-origin · background-clip · word-wrap · transform · transition · animation · @keyframes · linear-gradient · radial-gradient · rgba(r,g,b,a) · flex · flex-flow · justify-content · align-content · align-items · align-self · order · box-sizing · resize</p>
+<h2 id="-vue-router-bug">谈谈 vue-router 有哪两种模式，并谈谈他们的区别，或者可能会遇到的 bug</h2>
+<ol>
+<li>hash 模式：在浏览器中符号&quot;#&quot;,&quot;#&quot;以及&quot;#&quot;后面的字符称之为 hash，用 window.location.hash 读取；特点是 hash 虽然在 URL 中，但不被包括在 HTTP 请求中；用来指导浏览器动作，对服务器安全无用，hash 不会重新加载页面。在 hash 模式下，仅 hash 符号之前的内容会被包含在请求中，因此对于后端来说，即使没有做到对路由的全覆盖，也不会返回 404 错误。</li>
+<li>history 模式：history 采用 HTML5 的新特性，并且提供了两个新方法：pushState(),replaceState()可以对浏览器历史记录栈进行修改，以及 popState 事件的监听到状态变更。该模式下，前端的 URL 必须和实际向后端发起请求的 URL 一直。后端如果缺少对应路由的处理，将会返回 404 错误。Vue-Router 官网是这么描述的：“这种模式要玩好，还需要后台配合支持。所以，你要在服务端增加一个覆盖所有情况的候选资源：如果 URL 匹配不到任何静态资源，则应该返回同一个 index.html 页面，这个页面就是你 app 依赖的页面”</li>
+</ol>
+<h2 id="-class-a-input-class-b-input-">实现一个功能：在 class：a input 中输入内容，即时同步到 class:b input 中，尽量多写几种方法</h2>
+<pre><code class="lang-js">    &lt;input type=&quot;text&quot; class=&quot;a&quot; /&gt;
+    &lt;input type=&quot;text&quot; class=&quot;b&quot; /&gt;
+    //1、原生js
+    &lt;script&gt;
+      let a = document.querySelector(&#39;.a&#39;)
+      let b = document.querySelector(&#39;.b&#39;)
+      a.addEventListener(&#39;input&#39;, function() {
+        b.value = a.value
+      })
+    &lt;/script&gt;
+    //2、jq
+    &lt;script&gt;
+      $(&#39;.a&#39;).on(&#39;input&#39;, function() {
+        let str = $(&#39;.a&#39;).val()
+        $(&#39;.b&#39;).val(str)
+      })
+    &lt;/script&gt;
+</code></pre>
+<h2 id="-a-a-new-array-">谈谈 a=[]和 a= new Array()的区别，以及什么是深拷贝，什么是浅拷贝，会对开发有什么影响</h2>
+<p>new Array()是实例出一个对象，而[]是直接声明一个变量。很明显直接声明变量要比实例一个对象对性能的消耗更小。
+深拷贝：递归赋值所有层对象的属性，如果对象属性中还有对象，会继续拷贝。这样拷贝出来的对象完全独立，修改新对象的属性不会影响到原始对象的属性
+浅拷贝：将对象中的各个属性进行复制，只复制了一层对象的属性。如果对象的属性中还有对象，那赋值的仅仅是地址，在开发过程中，如果使用浅拷贝。那对象属性中引用类型发生变化会导致原始对象中对应属性的变化。这个变化可能是我们实际开发中不需要的。</p>
+<h2 id="-">前端优化的方案有哪些</h2>
+<p>可以百度雅虎 14 条性能优化原则，下面回答仅仅只是本人能理解，会使用的</p>
+<ol>
+<li>减少 HTTP 请求次数：CSS Sprites,JS、CSS 源码压缩，图片大小控制适合；CDN 托管，data 缓存，图片服务器</li>
+<li>前端模板 JS+数据，减少由 HTML 标签导致的带宽浪费，前端用变量保存 ajax 请求结果，每次操作本地变量，不同请求，减少请求次数</li>
+<li>用 innerHTML 代替 DOM 操作，减少 DOM 操作次数，优化 javascript 性能</li>
+<li>当需要设置的样式很多时，设置 className 而不是直接操作 style</li>
+<li>少用全局变量、缓存 DOM 节点查找的结果。减少 IO 读取操作</li>
+<li>避免使用 CSS Expression（CSS 表达式）</li>
+<li>图片预加载，将样式表放在顶部，将脚本放在底部 加上时间戳</li>
+<li>避免在页面的主体布局中使用 table，table 要等其中的内容完全下载之后才会显示出来，显示比 div+CSS 布局慢</li>
+</ol>
+<h2 id="-sort-2-">写一个函数 sort,将整数数组按奇偶分成 2 部分，数组左边是奇数，右边是偶数</h2>
+<pre><code class="lang-js">function mySort(Arr) {
+  let odd = []
+  let even = []
+  Arr.forEach(item =&gt; {
+    if (item % 2 === 0) {
+      even.push(item)
+    } else {
+      odd.push(item)
+    }
+  })
+  return odd.concat(even)
+}
+</code></pre>
+<h2 id="substring-substr-">subString 和 subStr 的区别</h2>
+<p>两个方法都是截取字符串的与部分，不同之处在于它们的第二个参数 subString 第二个参数是结束的下标（不包含），subStr 的第二个参数的截取的个数（长度）</p>
+<h2 id="ajax-get-post-">ajax 请求的时候 get 和 post 方式的区别</h2>
+<p>get 方式的所有参数全部包装在 URL 上，明文显示，且服务器的访问日志会记录，非常不安全
+post 的 URL 只是资源路径，不包含参数，参数封装在二进制的数据体中，服务器不会记录参数，相对安全。所有涉及用户隐私的数据都用 post 传输
+get 请求数据比较小 post 数据大
+post 需要写请求头</p>
+<h2 id="css3-">CSS3 新增伪类有哪些</h2>
+<p>:first-child :last-child :nth-child<br>:enabled :disabled 控制表单控件的禁用状态
+:checked 单选框或复选框被选中</p>
+<h2 id="-">选择器（符）有哪些？哪些属性可以继承？优先级算法如何计算</h2>
+<p>通配符选择器 * 类名选择器 .class id 选择器 #id 标签选择器
+后代选择器 div p 子代选择器 div&gt;p 交集选择器 div.p 并级选择器 div, p
+伪类选择器 : 属性选择器[] 伪元素选择器 :: 结构伪类选择器 :first-child
+字体系列：font-family font-weight font-size font-style
+文本系列：text-indent text-align line-height color word-spacing letter-spacing
+元素可见性： visibility
+优先级为
+!important &gt; [ id &gt; class &gt; tag ]<br>Important 比 内联优先级高</p>
+<h2 id="-echarts-api-">用过 eCharts 数据表吗？简单描述它的 api 方法</h2>
+<h2 id="-css-">请谈谈你对盒子模型的理解，以及如何在 CSS 中告诉浏览器使用不同盒子模型来渲染你的布局？</h2>
+<p>盒子模型分为两类，标准盒子模型，范围是 margin、border、padding、content 并且 content 不包含其他部分；IE 盒子模型范围也是 margin、border、padding、content 但 IE 盒子模型的 content 包含 border 和 padding
+在 CSS 中设置 box-sizing 来使用不同盒子模型，content-box 是标准盒子模型。border-box 是 IE 盒子模型</p>
+<h2 id="-css-">请用 CSS 实现多行文字的垂直居中</h2>
+<p>父元素 display:table
+子元素 display:table-cell、 vertical-align:middle</p>
+<h2 id="javascript-typeof-">JavaScript 的 typeof 返回的结果有哪些？</h2>
+<p>Undefined Number String Boolean Object</p>
+<h2 id="-url-">请尽可能完整得描述从输入 URL 到整个网页加载完毕及显示在屏幕上的整个流程</h2>
+<ol>
+<li>输入网址 URL</li>
+<li>浏览器获取 url，通过 DNS 解析获得网址的对应 IP 地址。首先先去各个缓存当中看看有没有 DNS 缓存，如果有则直接显示，不需要重新发送 HTTP 请求，如果没有进行下一步。</li>
+<li>通过 DNS 解析获得网址的对应 IP 地址</li>
+<li>浏览器与服务器 通过 TCP 三次握手协商来建立一个 TCP 连接。</li>
+<li>浏览器服务器 发送一个 HTTP 请求报文</li>
+<li>服务器处理请求并返回一个 HTTP 响应报文</li>
+<li>浏览器收到响应，进行客户端渲染，生成 Dom 树、Css 样式树、执行 Js 交互</li>
+<li>构建渲染树，计算并布局。</li>
+<li>浏览器绘制页面。</li>
+</ol>
+<h2 id="-link-import-">页面导入样式时，使用 link 和@import 有什么区别</h2>
+<p>区别： link 无兼容性，@import CSS2.1 以下浏览器不支持
+link 支持使用 JavaScript 改变样式 @import 不能</p>
+<h2 id="css3-transform-transition-">CSS3 中的 transform 属性和 transition 属性的语法与作用，使用这两个属性应该注意什么</h2>
+<p>transform 作用是转换 属性值有 translate:唯一元素；scale：缩放元素；rotate：旋转元素；transition 作用是过渡，语法 transition：[属性名] [持续时间] [速度曲线] [延迟时间]</p>
+<h2 id="-this-this-jquery-">\$(this)和 this 关键字在 jQuery 中有何不同</h2>
+<p>\$(this)返回一个 JQuery 对象，你可以对他调用多个 JQuery 方法，比如用 text()获取文本，用 val()获取值等等。而 this 代表当前元素，它是 javascript 关键词的一个，表示上下文中的当前 DOM 元素</p>
+<h2 id="-">创建时间获取当前（年，月，日，时，分，秒）</h2>
+<pre><code class="lang-js">let myDate = new Date()
+myDate.getFullYear() //年
+myDate.getMonth()
+myDate.getDate()
+myDate.getHours()
+myDate.getMinutes()
+myDate.getSeconds()
+myDate.toLocaleString() //当前时间自带年月日时分秒
+</code></pre>
+<h2 id="jquery-js-id-class-">jquery 或 js 获取（id,class,上一个兄弟节点,第一个子元素,浏览器可视区域宽高）</h2>
+<pre><code class="lang-js">//js方法
+document.querySelector(&#39;div&#39;).getAttribute(&#39;id&#39;)
+document.querySelector(&#39;div&#39;).className
+document.querySelector(&#39;div&#39;).previousSibling
+document.querySelector(&#39;div&#39;).firstElementChild
+window.innerWidth
+window.innerHeight
+// jquery方法
+$(&#39;div&#39;).attr(&#39;id&#39;) //id
+$(&#39;div&#39;).attr(&#39;class&#39;) //class
+$(&#39;div&#39;).prev() //上一个兄弟节点
+$(&#39;div&#39;).children(&#39;:first&#39;) //第一个子元素
+$(window).width()
+$(window).height()
+</code></pre>
+<h2 id="-ajax">创建 ajax</h2>
+<pre><code class="lang-js">function ajax(options) {
+  //如果没有传入参数 或者参数不是一个对象 则无法执行ajax函数
+  if (!options || typeof options !== &#39;object&#39;) {
+    return
+  }
+  var type = options.type || &#39;get&#39;
+  var url = options.url
+  // 如果url不存在 则无法执行ajax函数
+  if (!url) {
+    return
+  }
+  var data = options.data || null
+  if (data &amp;&amp; typeof data === &#39;object&#39;) {
+    var arr = []
+    for (var k in obj) {
+      arr.push(k + &#39;=&#39; + obj[k])
+      // 此时arr=[name=zs,age=18]
+    }
+    data = arr.join(&#39;&amp;&#39;)
+  }
+  //声明其他参数
+  var dataType = options.dataType || &#39;text&#39;
+  var success = options.success
+  var error = options.error
+  //发送请求
+  var xhr = new XMLHttpRequest()
+  //请求行
+  //请求方式为get时，需要拼url?data,并且拼完之后 data变成null 以便在请求体时使用
+  if (type === &#39;get&#39;) {
+    //判断data，如果是null那么就不拼接
+    if (!data) {
+      url = url
+    } else {
+      url = url + &#39;?&#39; + data
+    }
+    data = null
+  }
+  xhr.open(type, url)
+  //请求头
+  // 只有请求方式为post时 才有请求头
+  if (type === &#39;post&#39;) {
+    xhr.setRequestHeader(&#39;content-type&#39;, &#39;application/x-www-form-urlencoded&#39;)
+  }
+  //请求体
+  xhr.send(data)
+  // 获取响应
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4) {
+      var result
+      if (xhr.status === 200) {
+        if (dataType === &#39;xml&#39;) {
+          result = xhr.responseXML
+        } else if (dataType === &#39;json&#39;) {
+          result = JSON.parse(xhr.responseText)
+        } else {
+          result = xhr.responseText
+        }
+        success &amp;&amp; success(result)
+      } else {
+        error &amp;&amp; error()
+      }
+    }
+  }
+}
+</code></pre>
+<h2 id="-">什么是闭包，如何使用它，为什么要使用它</h2>
+<p>因为局部变量作用域的特性，在函数外部无法读取函数内部的局部变量，但有时，我们需要得到函数内的局部变量时，我们就在函数内部定义一个函数。这个被定义的函数就称为闭包。闭包就是能够读取其他函数内部变量的函数。闭包不能滥用，否则会导致内存泄露，影响网页的性能。闭包使用完了后，要立即释放资源，将引用变量指向 null。在函数 A 内部包裹一个函数 B，函数 B 可以访问到函数 A 的变量。1.使用闭包可以访问函数中的变量。2.可以使变量长期保存在内存中，生命周期比较长。</p>
+<h2 id="-">面向对象三大基本特征，五大基本原则</h2>
+<p>三大基本特征：封装、继承、多态
+五大基本原则: 1. 单一职责原则（SRP） 2. 开放封闭原则（OCP） 3. 里氏替换原则（LSP） 4. 依赖倒置原则（DIP） 5. 接口隔离原则（ISP）</p>
+<h2 id="-">列举几种循环方式</h2>
+<p>for 循环;forEach;do{}while();while(){};for key in obj;for key of obj</p>
+<h2 id="-cookies-sessionstorage-localstorage-">描述 cookies,sessionStorage 和 localStorage 区别</h2>
+<p>cookies 周期时间前后台都可以设置，大小不超过 4k,cookie 的数据会自动的传递到服务器，服务器端也可以写 cookie 到客户端；
+sessionStorage 页面关闭就清理，大小达到 5M 或更大，不会自动把数据发给服务器，仅在本地保存。
+localStorage 存储持久数据，浏览器关闭后数据不丢失除非主动删除数据，大小也达到 5M 或更大，也不会自动把数据发给服务器，仅在本地保存。</p>
+<h2 id="mvc-mvp-mvvm-">MVC，MVP，MVVM 比较以及区别</h2>
+<p>MVC(Model-View-Controller), 模块-视图-控制器， 由 MVC 衍生出的 MVP, MVVM。视图（View）：用户界面；控制器（controller）：业务逻辑；模型（Model）： 数据保存；
+MVP(Model-View-Presenter),对比 MVC，model 跟 view 完全不知道对方的事，他们只跟 presenter 交流，presenter 作为他们的代理出现；
+MVVM(Model-View-ViewModel),它采用双向数据绑定，用户对 View 的变动，自动反映在 ViewModel，对 model 进行更新，反之对 model 修改也是</p>
+<h2 id="-">冒泡排序</h2>
+<pre><code class="lang-js">//降序
+function sort(arr) {
+  for (var i = 0; i &lt; arr.length - 1; i++) {
+    var flag = true
+    for (var j = 0; j &lt; arr.length - 1 - i; j++) {
+      if (arr[j] &lt; arr[j + 1]) {
+        var temp = arr[j]
+        arr[j] = arr[j + 1]
+        arr[j + 1] = temp
+        flag = false
+      }
+    }
+    if (flag === true) {
+      break
+    }
+  }
+  return arr
+}
+</code></pre>
+<h2 id="javascript-">javascript 中定时器有哪些？他们区别及用法是什么</h2>
+<p>setTimeOut()函数只会调用一次，时间到了就执行函数
+setInterval()只要不清理该定时器，函数会调用多次。每隔一段时间触发一次函数</p>
+<h1 id="31-60-">31-60 题</h1>
+<h2 id="js-">js 有几种数据类型，其中基本数据类型有哪些</h2>
+<p>基本数据类型：Number String Boolean Undefined Null
+复杂数据类型： Object</p>
+<h2 id="undefined-null-">undefined 和 null 区别</h2>
+<p>null 是一个表示“无”的对象，转成数值为 0，undefined 是表示一个“无”的原始值，转成数值为 NaN，当声明的变量未被初始化时，变量的默认值为 undefined。null 用来表示尚未存在的对象，常用来表示函数企图返回一个不存在的对象，undefined 表示“缺少值”，就是此处应该有一个值，但是还没有定义</p>
+<h2 id="-">如何解决跨域问题</h2>
+<p>JSONP 使用 script 标签向后台请求数据，但只适合 get 请求
+CORS 是让服务端设置 Response Header 响应头中的 Access-Control-Allow-Origin 为对应的域名,这样浏览器就不会报跨域错误，但出于安全性方面的考虑尽量不要用*,但对于一些不重要的数据则随意
+反向代理 是搭建一个自己的服务器，让我的服务器请求数据，拿到数据之后再放回给我自己</p>
+<h2 id="-">手机页面布局自适应方法</h2>
+<p>采用 rem 布局
+使用下面的代码自适应屏幕大小设置 html 的 font-size</p>
+<pre><code class="lang-js">$(function() {
+  $(window)
+    .resize(function() {
+      let width = $(window).width()
+      width = Math.max(width, 320) //最小宽度
+      width = Math.min(width, 750) //最大宽度
+      let fontSize = width / 15
+      $(&#39;html&#39;).css(&#39;fontSize&#39;, fontSize.toFixed(2) + &#39;px&#39;)
+    })
+    .resize()
+})
+</code></pre>
+<h2 id="-bfc">什么是 BFC</h2>
+<p>块级格式化上下文，具有 BFC 特性的元素可以看作是隔离了的单独容器，容器里面的元素不会在布局上影响到外面的元素，也不会受到外面元素的影响。
+只要元素满足下面任一条件即可触发 BFC 特性：</p>
+<ol>
+<li>body 根元素</li>
+<li>浮动元素： float 不为 none</li>
+<li>position 为 absolute 或 fixed</li>
+<li>display 为 inline-block,table-cell,table-caption,flex,inline-flex</li>
+<li>overflow 不为 visible</li>
+</ol>
+<h2 id="px-em-rem-">px，em，rem 的区别</h2>
+<p>px 像素：绝对单位，相对于显示器屏幕分辨率而言的，是一个虚拟长度单位
+em：相对长度单位，相对于当前对象内文本的字体尺寸
+rem：也是相对长度单位，，相对的是 HTML 根元素</p>
+<h2 id="-">清除浮动的几种方式</h2>
+<ol>
+<li>给父级元素定义 height</li>
+<li>结尾处加一个空的 div 标签，样式给 clear:both</li>
+<li>父级元素定义伪类和 zoom</li>
+</ol>
+<pre><code class="lang-css">.clearfix:after {
+  content: &#39;&#39;;
+  display: block;
+  visibility: hidden;
+  height: 0;
+  line-height: 0;
+  clear: both;
+}
+.clearfix {
+  zoom: 1;
+}
+</code></pre>
+<ol start="4">
+<li>父元素定义 overflow:hidden</li>
+<li>双伪元素法：</li>
+</ol>
+<pre><code class="lang-css">.clearfix::before,
+.clearfix::after {
+  content: &#39;&#39;;
+  display: table;
+}
+.clearfix::after {
+  clear: both;
+}
+.clearfix {
+  *zoom: 1;
+}
+</code></pre>
+<h2 id="css-iphone-ipad-">css 去掉 iPhone，iPad 默认按钮样式</h2>
+<pre><code class="lang-css">input[type=&#39;button&#39;],
+input[type=&#39;submit&#39;],
+input[type=&#39;reset&#39;] {
+  -webkit-appearance: none;
+}
+textarea {
+  -webkit-appearance: none;
+}
+</code></pre>
+<h2 id="console-">console 有哪些常用方法</h2>
+<p>console.log()打印日志</p>
+<p>console.error()/console.warn()打印的日志带有 error 红色图标/warn 黄色图标</p>
+<p>console.time()/console.timeEnd()组合使用可以计算代码执行时长</p>
+<p>console.table()打印表格</p>
+<h2 id="javascript-">javascript 是一门怎么样的语言，它有哪些特点</h2>
+<p>javascript 是一种直译式脚本语言，是一种动态类型、弱类型、基于原型的语言，广泛用于客户端的脚本语言，最早是在 HTML 网页上使用，用来给 HTML 网页增加动态功能。javascript 兼容于 ECMA 标准，因此也称为 ECMAScript。</p>
+<p>基本特点</p>
+<ol>
+<li>是一种解释性脚本语言（代码不进行预编译）</li>
+<li>主要用来向 HTML 页面添加交互行为</li>
+<li>可以直接嵌入 HTML 页面，但写成单独的 js 文件有利于结构和行为的分离</li>
+<li>跨平台特性，在绝大多数浏览器的支持下，可以在多种平台下运行</li>
+</ol>
+<h2 id="-new-">构造函数中 new 做了四件事</h2>
+<ol>
+<li>创造一个新的对象</li>
+<li>把 this 指向新对象</li>
+<li>执行构造函数</li>
+<li>返回新对象</li>
+</ol>
+<h2 id="-">原型，原型链?原型链的应用</h2>
+<p>每一个函数创建的时候都会有一个自带的属性，这个属性指向一个对象，这个对象就是原型。
+每一个构造函数所创建出来的实例都可以调用这个原型里面的属性 和方法。
+原型本身也是一个对象，这个对象就是 Object 的实例，所以原型也可以调用到 Object 的原型，这样就组成一个链式结构，这个就是原型链
+原型链是实现继承的主要方法</p>
+<h2 id="-">几种常见的继承方式</h2>
+<ol>
+<li>扩展原型对象实现继承 给原型的 prototype 属性上添加要继承的属性或者方法。那么实例对象也会有该属性或者方法</li>
+<li>利用 apply()和 call()实现继承</li>
+<li>Object.create(继承目标)</li>
+<li>混入式继承+原型式继承：将混入式的 extend 方法放到原型上，这样可以继承多个对象</li>
+</ol>
+<h2 id="-json-">对 json 的了解</h2>
+<p>json 指的是 js 对象表示法</p>
+<ol>
+<li>轻量级的数据交互格式</li>
+<li>可以形成复杂的嵌套格式</li>
+<li>解析非常方便</li>
+<li>易于读写，占用带宽小</li>
+</ol>
+<h2 id="-es6-">总结常用的 ES6 语法</h2>
+<ol>
+<li>let 声明变量，不会预解析，必须先声明才可以使用，不能重复声明，具有块级作用域</li>
+<li>const 声明一个不会变化的常量</li>
+<li>解构赋值 可以同时定义多个变量，从一个对象中解构出来</li>
+<li>字符串模板 使用反引号<code></code>创建字符串，此方法创建的字符串可以包含由\$加花括号包裹的变量</li>
+<li>箭头函数 函数写法更加简洁，函数内部没有 this 对象，而是全部继承外面的</li>
+<li>proxy 监听对象身上发生的变化，并执行相应的操作</li>
+<li>for of 数组遍历
+...</li>
+</ol>
+<h2 id="apply-call-bind-">apply,call,bind 的区别</h2>
+<p>三者都是将一个函数应用到其他对象上，而不是自身对象。apply,call 会直接执行函数，bind 是绑定，执行需要再次调用。apply 和 call 的区别在于 apply 接受数组作为参数，而 call 是接受逗号分隔的无限多个参数列表</p>
+<h2 id="-">什么是内存泄漏，哪些操作会造成内存泄漏</h2>
+<p>内存泄漏是指一块被分配的内存既不能使用，又不能回收，直到浏览器进程结束。
+造成内存泄漏的操作：</p>
+<ol>
+<li>全局变量引用的内存泄漏</li>
+<li>闭包引起的内存泄漏</li>
+<li>DOM 清空或者删除时，事件未清除导致的内存泄漏</li>
+<li>被遗忘的计时器或回调函数</li>
+</ol>
+<h2 id="jq-">jq 在项目中常用的方法</h2>
+<p>使用 jQuery 获取元素，获取元素内容，事件操作，操作 css，ajax</p>
+<h2 id="jquery-fn-init-this-this">jQuery.fn 的 init 方法返回的 this 指的是什么对象，为什么要返回 this</h2>
+<p>this 执行 init 构造函数自身，其实就是 jQuery 实例对象，返回 this 是为了实现 jQuery 的链式操作</p>
+<h2 id="jquery-extend-jquery-fn-extend-">jquery.extend 与 jquery.fn.extend 区别</h2>
+<p>jquery.extend()用来扩展 jQuery 对象本身；jquery.fn.extend()用来扩展 jQuery 实例</p>
+<h2 id="jquery-bind-live-delegate-on-">jQuery 中.bind().live().delegate().on()的区别</h2>
+<ol>
+<li>bind()为匹配的元素的特定事件绑定事件处理函数。不能注册委托事件</li>
+<li>live()给匹配元素附加一个事件处理函数，即使这个元素是以后添加进来的</li>
+<li>delegate()给指定的子元素添加一个或多个事件处理函数</li>
+<li>on()在选择元素上绑定一个或多个事件的事件处理函数</li>
+</ol>
+<h2 id="http-https-">http 和 https 的区别是什么</h2>
+<p>http 与 https 使用的是完全不同的连接方式，用的端口也不一样，http 是 90，https 是 443；https 失忆安全为目标的 http 通道，由于 https 要还密钥和确认加密算法的过程，所以更安全</p>
+<h2 id="jsonp-">jsonp 的原理，有什么优缺点</h2>
+<p>ajax 请求受同源策略的影响，不允许进行跨域请求，而 script 标签的 src 属性中的连接却可以访问跨域的 js 脚本。利用这个特性，服务器不再返回 json 格式的数据，而是返回一段可以调用某个函数的 js 代码，在 src 中进行调用，这样就实现跨域</p>
+<p>优点：
+完美解决在测试或者开发中获取不同域名下的数据，用户传递一个 callback 参数给服务器，然后服务端返回数据时会将这个 callback 参数作为函数名来包裹住 json 数据，这样客户端就可以随意定制自己的函数来自动 处理返回函数</p>
+<h2 id="-">同源策略</h2>
+<p>浏览器因为安全的原因，有一套策略，叫做同源策略。这套策略只在浏览器端才有。当你的请求协议，域名或者端口有一个不同就会跨域。
+跨域时，浏览器实际上是拿到数据的，但浏览器不会将数据给你，所以你也就没有办法获取到数据。
+跨域的主要目的是为了防止利用用户的登录态发起恶意的请求</p>
+<h2 id="jq-ajax-">jq 中 ajax 请求的步骤？怎么解决跨域的？</h2>
+<ol>
+<li>创建<code>XMLHttpRequest</code>对象，也就是创建一个异步调用对象</li>
+<li>创建一个新的 HTTP 请求，并制定该 HTTP 请求方式，URL 以及验证信息</li>
+<li>设置响应 HTTP 请求状态变化的函数</li>
+<li>发送 HTTP 请求</li>
+<li>获取异步调用返回的数据</li>
+<li>使用 JavaScript 和 DOM 实现局部刷新
+解决跨域---jQuery 中封装了 jsonp，但只支持 get 方式。ajax 本身是不可以跨域的，它通过创建一个 script 标签来实现跨域。因为 script 标签的 src 属性是没有跨域的限制的。
+其实设置了 dataType：&#39;jsonp&#39;后，\$.ajax 方法与 ajax XMLHttpRequest 就没关系了，
+内部不会用 XMLHttpRequest 去发送请求，而是用 JavaScript 发送请求</li>
+</ol>
+<h2 id="ajax-">ajax 的交互原理</h2>
+<p>Ajax 的原理简单来说是通过 XMLHttpRequest 对象来向服务器发异步请求，从服务器获得数据，然后用 JavaScript 来操作 DOM 更新页面。这其中最关键的一步是从服务器获得请求数据</p>
+<h2 id="-">同步和异步的区别</h2>
+<p>同步：同步任务指的是，在主线程上排队执行的任务，只有前一个任务执行完毕，才能执行后一个任务</p>
+<p>异步：不进入主线程，而进入‘任务队列’的任务，只有等主线程任务执行完毕，‘任务队列’开始通知主线程，请求执行任务，该任务才会进入主线程执行</p>
+<h2 id="ajax-">ajax 出现错误怎么调试</h2>
+<p>通过捕捉 error 事件来获取出错的信息
+发送 error 可能由下面两种因素引起，或者其他程序问题</p>
+<ol>
+<li>data:&quot;{}&quot;，data 为空也要传&quot;{}&quot;；不然返回的是 xml 格式，并提示 parsererror</li>
+<li>parsererror 的异常和 header 类型也有关系。及编码 header(&#39;Content-type:text/html;charset=utf8&#39;)</li>
+</ol>
+<h2 id="-">字符串编码</h2>
+<p>encodeURIComponent 与 encodeURI 差不多。一个汉字对应 9 个字符长。空格转换成%20</p>
+<pre><code class="lang-js">str = encodeURIComponent(&#39;你 hao&#39;)
+console.log(str.length) // 15(汉字9+空格3+hao3)
+</code></pre>
+<h2 id="-clone-javascript-5-number-string-object-array-boolean-">实现一个函数 clone，可以对 JavaScript 中的 5 种主要的数据类型（包括 Number、String、Object、Array、Boolean）进行值复制</h2>
+<pre><code class="lang-js">function clone(obj) {
+  let o
+  switch (typeof obj) {
+    case &#39;undefined&#39;:
+      break
+    case &#39;number&#39;:
+      o = +obj
+      break
+    case &#39;string&#39;:
+      o = obj + &#39;&#39;
+      break
+    case &#39;boolean&#39;:
+      o = !!obj
+      break
+    case &#39;object&#39;:
+      if (obj === null) {
+        o = null
+      } else {
+        o = Array.isArray(obj) ? [] : {}
+        for (let key in obj) {
+          o[key] = typeof obj[key] === &#39;object&#39; ? clone(obj[key]) : obj[key]
+        }
+      }
+      break
+  }
+  return o
+}
+</code></pre>
+<h1 id="61-90-">61-90 题</h1>
+<h2 id="-x-">有一个变量 x，已知其为一个未知大小写的字母，要将其做大小写转换</h2>
+<pre><code class="lang-js">// 仅针对单个字母或者多个同大小写的单词，即aBc==&gt;ABC，无法转成AbC
+function toggleUpperCase(str) {
+  let newStr = str.toUpperCase()
+  return newStr === str ? str.toLowerCase() : newStr
+}
+</code></pre>
+<h2 id="-btn3-hello2-hello1-">在下面‘添加代码区域’添加代码实现点击 btn3 按钮后，浏览器弹出‘hello2’以及‘hello1’的提示</h2>
+<pre><code class="lang-html">&lt;input type=&quot;button&quot; value=&quot;click me&quot; id=&quot;btn3&quot; /&gt;
+&lt;script&gt;
+  var btn3 = document.getElementById(&#39;btn3&#39;)
+  function h1() {
+    alert(&#39;h1&#39;)
+  }
+  function h2() {
+    alert(&#39;h2&#39;)
+  }
+  // 添加代码区域
+  btn3.addEventListener(&#39;click&#39;, h2)
+  btn3.addEventListener(&#39;click&#39;, h1)
+  //
+&lt;/script&gt;
+</code></pre>
+<h2 id="-10-dom-">列举 10 个 DOM 事件并写出阻止事件冒泡关键代码</h2>
+<p>DOM 事件：</p>
+<ul>
+<li>鼠标事件：click，dblclick，mouseenter， mouseover，mouseout，mousemove,mousedown，mouseup</li>
+<li>键盘事件：keyup，keydown</li>
+<li>window 事件：onload，onscroll，onresize</li>
+<li>过渡完成： transitionend（用 addEventListener）</li>
+<li>表单事件： onfocus，onblur，onchange，oninput</li>
+</ul>
+<p>阻止事件冒泡关键代码：e.preventDefault()</p>
+<h2 id="http-">HTTP 状态码定义</h2>
+<ul>
+<li>1 开头：消息</li>
+<li>2 开头：成功
+200-请求已成功，请求所希望的响应头或数据体将随此响应返回。出现此状态码是表示正常状态</li>
+<li>3 开头：重定向</li>
+<li><p>4 开头：请求错误
+400-1、语义有误，当前请求无法被服务器理解。除非进行修改，否则客户端不应该重复提交这个请求。2、请求参数有误。</p>
+<p>401-当前请求需要用户验证</p>
+<p>403-服务器已经理解请求，但是拒绝执行它。</p>
+<p>404-请求失败，请求所希望得到的资源未被在服务器上发现。</p>
+</li>
+<li><p>5 开头：服务器错误
+500-服务器遇到了一个未曾预料的状况，导致了它无法完成对请求的处理。
+详见<a href="https://www.cnblogs.com/liaoshiyong/p/3150839.html">https://www.cnblogs.com/liaoshiyong/p/3150839.html</a></p>
+</li>
+</ul>
+<h2 id="-http-">一次完整的 HTTP 事务是怎样一个过程</h2>
+<p>域名解析 --&gt; 发起 TCP 的 3 次握手 --&gt; 建立 TCP 连接后发起 http 请求 --&gt; 服务器响应 http 请求，浏览器得到 html 代码 --&gt; 浏览器解析 html 代码，并请求 html 代码中的资源（如 js、css、图片等） --&gt; 浏览器对页面进行渲染呈现给用户</p>
+<h2 id="-">浏览器页面渲染流程</h2>
+<ol>
+<li>解析文档构建 DOM 树
+HTML/XHTML/SVG 解析这三种文件后，生成 DOM 树
+CSS：解析样式表，生成 CSS 规则树
+JavaScript：解析脚本，通过 DOM API 和 CSSOM API 操作 DOM 树与 CSS 规则树，与用户进行交互</li>
+<li>构建渲染树
+解析文档完成后，浏览器引擎会将 CSS 规则树附着到 DOM 树上，并根据 DOM 树和 CSS 规则树构造渲染树</li>
+<li>布局与绘制渲染树
+解析 position,overflow,z-index 等等属性，计算每一个渲染树节点的位置和大小，此过程被称为 reflow。最后调用操作系统的 Native GUI API 完成绘制</li>
+</ol>
+<h2 id="-js-">刷新页面，js 请求一般会有哪些地方有缓存处理</h2>
+<p>DNS 缓存：短时间内多次访问某个网站，在限定时间内，不用多次访问 DNS 服务器。</p>
+<p>CDN 缓存：内容分发网络（人们可以在就近的代售点取火车票了，不用非得到火车站去排队）</p>
+<p>浏览器缓存：浏览器在用户磁盘上，对最新请求过的文档进行了存储。</p>
+<p>服务器缓存：将需要频繁访问的 Web 页面和对象保存在离用户更近的系统中，当再次访问这些对象的时候加快了速度。</p>
+<h2 id="ajax-">ajax 的缺点</h2>
+<ol>
+<li>ajax 不支持浏览器 back 按钮</li>
+<li>安全问题 ajax 暴露了与服务器交互的细节</li>
+<li>对搜索引擎的支持比较弱</li>
+<li>破坏程序的异常机制</li>
+<li>不容易调试</li>
+</ol>
+<h2 id="web-data-">web 应用从服务器主动推送 Data 到客户端有哪些方式</h2>
+<ul>
+<li>html5 websocket</li>
+<li>WebSocket 通过 Flash</li>
+<li>XHR 长时间连接</li>
+<li>XHR MultipartStreaming</li>
+<li>不可见的 Iframe</li>
+<li><code>&lt;script&gt;</code>标签的长时间连接（可跨域）</li>
+</ul>
+<h2 id="window-onload-document-ready-">window.onload 和 document ready 的区别</h2>
+<p>window.onload 是在 dom 文档树加载完和所有文件加载完之后执行一个函数 Document.ready 原生中没有这个方法，jquery 中有$().ready(function)，在dom文档树加载完之后执行一个函数（注意，这里面的文档树加载完不代表全部文件加载完）
+$(document).ready 要比 window.onload 先执行
+window.onload 只能出来一次，\$(document).ready 可以出现多次</p>
+<h2 id="-">什么是事件代理？请写出一个事件代理的示例</h2>
+<ol>
+<li>当网页中需要触发事件的对象比较多的时候，为了避免内存泄漏，我们把事件委托到其父对象上，借助事件冒泡机制，可以将事件委托到 body，document 等元素上，这样等于一个页面就只有一个事件触发，避免直接把事件添加到多个对象上</li>
+<li>动态加载的数据是不能直接进行事件的绑定，这时就需要使用事件委托
+例如：\$(body).on(&#39;click&#39;,&#39;#div&#39;,function(){})</li>
+</ol>
+<h2 id="js-">js 延迟加载的方式有哪些</h2>
+<p>defer 属性；async 属性；动态创建 DOM 方式；使用 Jquery 的 getScript 方法；使用 setTimeOut 延迟方法；让 JS 最后加载</p>
+<h2 id="-">如何优化自己代码</h2>
+<ol>
+<li>代码重用</li>
+<li>避免使用过多的全局变量</li>
+<li>拆分函数避免函数过于臃肿：单一职责原则</li>
+<li>将面向过程的编程方式改为使用面向对象编程</li>
+<li>适当的注释，尤其是一些复杂的业务逻辑或者计算逻辑，都应该写出这个业务逻辑的具体过程</li>
+<li>内存管理，尤其是闭包中的变量释放</li>
+</ol>
+
+          	</article>
+        </div>
+		</div>
+  </body>
+</html>
+<script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="toc/js/ztree_toc.js"></script>
+<script type="text/javascript" src="toc_conf.js"></script>
+
+<SCRIPT type="text/javascript" >
+<!--
+$(document).ready(function(){
+    var css_conf = eval(markdown_panel_style);
+    $('#readme').css(css_conf)
+    
+    var conf = eval(jquery_ztree_toc_opts);
+		$('#tree').ztree_toc(conf);
+});
+//-->
+</SCRIPT>
