@@ -1,137 +1,211 @@
 <html>
   <head>
-	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title>i5ting_ztree_toc:index</title>
-		<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css"/>
-		<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css"/>
-		<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css"/>
-	  <style>
-		pre {
-		    counter-reset: line-numbering;
-		    border: solid 1px #d9d9d9;
-		    border-radius: 0;
-		    background: #fff;
-		    padding: 0;
-		    line-height: 23px;
-		    margin-bottom: 30px;
-		    white-space: pre;
-		    overflow-x: auto;
-		    word-break: inherit;
-		    word-wrap: inherit;
-		}
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>前端知识</title>
+    <link
+      href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css"
+      media="all"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css"
+      media="all"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="toc/css/zTreeStyle/zTreeStyle.css"
+      media="all"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <style>
+      pre {
+        counter-reset: line-numbering;
+        border: solid 1px #d9d9d9;
+        border-radius: 0;
+        background: #fff;
+        padding: 0;
+        line-height: 23px;
+        margin-bottom: 30px;
+        white-space: pre;
+        overflow-x: auto;
+        word-break: inherit;
+        word-wrap: inherit;
+      }
 
-		pre a::before {
-		  content: counter(line-numbering);
-		  counter-increment: line-numbering;
-		  padding-right: 1em; /* space after numbers */
-		  width: 25px;
-		  text-align: right;
-		  opacity: 0.7;
-		  display: inline-block;
-		  color: #aaa;
-		  background: #eee;
-		  margin-right: 16px;
-		  padding: 2px 10px;
-		  font-size: 13px;
-		  -webkit-touch-callout: none;
-		  -webkit-user-select: none;
-		  -khtml-user-select: none;
-		  -moz-user-select: none;
-		  -ms-user-select: none;
-		  user-select: none;
-		}
+      pre a::before {
+        content: counter(line-numbering);
+        counter-increment: line-numbering;
+        padding-right: 1em; /* space after numbers */
+        width: 25px;
+        text-align: right;
+        opacity: 0.7;
+        display: inline-block;
+        color: #aaa;
+        background: #eee;
+        margin-right: 16px;
+        padding: 2px 10px;
+        font-size: 13px;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
 
-		pre a:first-of-type::before {
-		  padding-top: 10px;
-		}
+      pre a:first-of-type::before {
+        padding-top: 10px;
+      }
 
-		pre a:last-of-type::before {
-		  padding-bottom: 10px;
-		}
+      pre a:last-of-type::before {
+        padding-bottom: 10px;
+      }
 
-		pre a:only-of-type::before {
-		  padding: 10px;
-		}
+      pre a:only-of-type::before {
+        padding: 10px;
+      }
 
-		.highlight { background-color: #ffffcc } /* RIGHT */
-		</style>
+      .highlight {
+        background-color: #ffffcc;
+      } /* RIGHT */
+    </style>
   </head>
   <body>
-	  <div>
-				<div style='width:25%;'>
-						<ul id="tree" class="ztree" style='width:100%'>
-
-						</ul>
-				</div>
-        <div id='readme' style='width:70%;margin-left:20%;'>
-          	<article class='markdown-body'>
-            	<h1 id="-">前端知识</h1>
-<p>注：标题带*为理论，带#为曾经遇到过BUG</p>
-<h2 id="vue">VUE</h2>
-<h3 id="-1-mvvm-">*1.对于MVVM的理解</h3>
-<p>MVVM是Model-View-ViewModel的缩写，Model代表数据层，它仅仅关注数据本身，不关心任何操作行为；View代表视图层，主要负责展示视图；ViewModel代表业务逻辑层，View需要什么数据，ViewModel就提供这个数据，View进行了哪些操作，ViewModel就响应那些操作，这部分是由框架实现，不需要程序员进行开发，就可以自动的实现数据到视图，以及视图到数据的流程。在vue2.0的MVVM实现中，对ViewModel的实现是利用了ES5的Object.defineProperty方法，当new Vue在实例化的时候，首先将data方法里返回的对象属性都挂载上setter方法，而setter方法里将页面上的属性进行绑定，当页面加载的时候哦，浏览器提供的DOMContentloaded事件触发后，调用mounted挂载函数，开始获取接口数据，获取完成后，给data里属性赋值，赋值时触发之前挂载好的setter方法，从而引起页面的联动，达到响应式效果。在Vue3.0将会使用Proxy和Reflect来替代Object.defineProprety的方式（Proxy和Reflect将在ES6的篇章介绍）</p>
-<h3 id="-2-proxy-defineproperty-">*2. Proxy相比于defineProperty的优势</h3>
-<p>Object.defineProperty的问题主要有三个：1、不能监听数组的变化；2、必须遍历对象的每个属性；3、必须深层遍历嵌套的对象</p>
-<p>而Proxy的特点有：1、针对真个对象，而不是对象的某个属性，这样就不需要遍历对象；2、支持数组。Proxy的第二个参数可以有13中拦截方式，比Object.defineProperty更加丰富。</p>
-<h3 id="3-vue-">3.  常用的vue指令</h3>
-<p>v-model：表单元素属性与数据双向绑定；</p>
-<p>v-if，v-show：条件渲染，v-show它只是CSS中的display显示隐藏，HTML元素仍然是存在的，而v-if为false的时候，页面中是不会有这个HTML元素生成；</p>
-<p>v-on：绑定事件的，用@代替；</p>
-<p>v-text，v-html：类似js中innerText和innerHtml；</p>
-<p>v-for：列表渲染；</p>
-<p>v-bind：动态绑定一个或多个特性，或一个组件prop到表达式，可用：替代；</p>
-<h3 id="-4-vue-">*4. Vue的双向数据绑定原理</h3>
-<p>vue是采用数据劫持结合发布者-订阅者模式的方式，通过Object.defineProperty来劫持各个属性的setter，getter，在数据变化时发布消息给订阅者，触发相应的监听回调。</p>
-<p>具体步骤：</p>
-<ul>
-<li><p>需要Observer的数据对象进行递归遍历，包括子属性对象的属性，用Object.defineProperty都加上setter和getter。这样的话，给这个对象的某个值赋值时，就会触发setter，那么就能监听到数据的变化。</p>
-</li>
-<li><p>compile解析模板指令，将模板中的变量替换成数据，然后初始化渲染页面视图，并将每个指令对应的节点绑定更新函数，添加监听数据的订阅者，一旦数据有变化，收到通知，更新视图。</p>
-</li>
-<li><p>Watcher订阅者是Observer和Compile之间的通信桥梁，主要做的事情是：</p>
-<p>1、在自身实例化的时候往属性订阅者里添加自己；</p>
-<p>2、自身必须有一个update方法；</p>
-<p>3、待属性变动dep.notice通知时，能调用自身的update方法，并触发compile中绑定的回调</p>
-</li>
-<li><p>MVVM作为数据绑定的入口，整合Observer、Compile和Watcher三者，通过Observer来监听自己model数据变化，通过Compile来解析编译模板指令，最终利用Watcher搭起Observer和Compile之间的通信桥梁，达到数据变化，视图更新；视图交互变化，数据model变化的双向绑定效果</p>
-</li>
-</ul>
-<h3 id="-5-vue-">*5. Vue的生命周期</h3>
-<p>vue生命周期表示一个vue实例从创建到销毁的过程，这个过程一共分成四个阶段，创建阶段，挂载阶段，更新阶段和销毁阶段。<strong>创建阶段</strong>在new vue()的对象中，先执行了init，对生命周期中的钩子函数与生命周期进行初始化，在init的过程中，我们首先可以调用beforeCreate这个钩子函数。然后再把data数据通过object.defineProperty注入vue实例中做成响应式数据，完成之后，我们可以调用created钩子函数。在数据初始化并注入完成之后，它会去判断vue实例中传入的数据是否有el属性，如果没有，它会调用vm.$mount(el)这个方法，再执行下一步，判断是否含有template属性，如果有，它会编译模板，创建一个render函数，如果没有，则把el对应的html代码编译成模板。此时可以调用beforeMount。然后进入<strong>挂载阶段</strong>，挂载阶段会根据这个模板把我们数据渲染好，渲染完成之后它会创建vm.$el，用这个因创建的元素，把页面的el替换，这个时候我们就能看到页面上有数据的html元素，此时我们可以调用mounted。<strong>更新阶段</strong>是当数据发生更新，vue监听到数据的变化，重新渲染虚拟DOM对页面内容进行更新，这个阶段发生前后我们可以调用beforeUpdate和updated。当vm.$destory()被调用时，就进入<strong>销毁阶段</strong>，销毁阶段会将所有和当前vue实例相关的资源释放掉。在销毁阶段前后我们可以调用beforeDestroy和destoryed。这个阶段无法自动把定时器延时器以及异步操作的代码释放掉，所以我们需要手动调用destoryed这个钩子函数释放。这样一个vue实例的生命周期就完成</p>
-<h3 id="6-">6. 事件修饰符</h3>
-<p>.stop：阻止事件冒泡；.self：只有自己可以触发；.prevent：阻止事件默认行为；.once：只触发一次；.capture：阻止事件捕获</p>
-<h3 id="7-">7. 按键修饰符，系统修饰键自行百度</h3>
-<h3 id="8-vue-set-vm-set">8. 向响应式对象中添加一个属性，使属性同样是响应式：Vue.set/vm.$set</h3>
-<p>Vue.set(target，propertyName/index，value)</p>
-<p>参数：target：Object|Array；propertyName/index：string|number；value：any</p>
-<p>因为Vue无法探测普通的新增属性，所以必须使用这个方法向响应式对象上添加新属性，向响应式对象中添加一个属性，并确保这个新属性同样是响应式的，且触发视图更新 </p>
-<h3 id="9-vue-nexttick-vm-nexttick">9. 访问更新后的数据：Vue.nextTick/vm.$nextTick</h3>
-<p>Vue.nextTick([callback，context])</p>
-<h3 id="10-vue-directive">10. 注册或获取全局指令：Vue.directive</h3>
-<p>Vue.directive(id，[definition])</p>
-<p>directive:{}可以局部注册</p>
-<p>钩子函数如下：</p>
-<p>insert：当当前指令所在的元素被插入到页面时执行；</p>
-<p>bind：当vue要对当前指令所在的元素进行解析的时候；</p>
-<p>update：当当前指令绑定的数据发生变化的时候；</p>
-<p>componentUpdate：当数据改变完成，元素更新完毕之后；</p>
-<p>unbind：当指令被卸载的时候</p>
-<p>在自定义指令中的钩子函数可以获取的相关信息：</p>
-<p>name:当前指令名；rowname:带V的指令吗；expression:等号后面的表达式；arg:指令参数； modifiers:指令修饰等，这是一个对象，修饰符都会被作为属性存在这个对象中，属性值为true；value:表达式的值 </p>
-<p><img src="C:\Users\Administrator\Desktop\笔记用图\binding的属性.png" alt="binding的属性"></p>
-<h3 id="11-vue-">11.  vue组件通信之父传子</h3>
-<p>父组件中子组件调用，使用v-bind绑定传递的值，子组件中props里可以获取</p>
-<pre><code>父组件：
+    <div>
+      <div style="width: 25%;">
+        <ul
+          id="tree"
+          class="ztree"
+          style="width: 100%; background-color: #fff;"
+        ></ul>
+      </div>
+      <div id="readme" style="width: 70%; margin-left: 25%;">
+        <article class="markdown-body">
+          <h1 id="-">前端知识</h1>
+          <p>注：标题带*为理论，带#为曾经遇到过BUG</p>
+          <h2 id="vue">VUE</h2>
+          <h3 id="-1-mvvm-">*1.对于MVVM的理解</h3>
+          <p>
+            MVVM是Model-View-ViewModel的缩写，Model代表数据层，它仅仅关注数据本身，不关心任何操作行为；View代表视图层，主要负责展示视图；ViewModel代表业务逻辑层，View需要什么数据，ViewModel就提供这个数据，View进行了哪些操作，ViewModel就响应那些操作，这部分是由框架实现，不需要程序员进行开发，就可以自动的实现数据到视图，以及视图到数据的流程。在vue2.0的MVVM实现中，对ViewModel的实现是利用了ES5的Object.defineProperty方法，当new
+            Vue在实例化的时候，首先将data方法里返回的对象属性都挂载上setter方法，而setter方法里将页面上的属性进行绑定，当页面加载的时候哦，浏览器提供的DOMContentloaded事件触发后，调用mounted挂载函数，开始获取接口数据，获取完成后，给data里属性赋值，赋值时触发之前挂载好的setter方法，从而引起页面的联动，达到响应式效果。在Vue3.0将会使用Proxy和Reflect来替代Object.defineProprety的方式（Proxy和Reflect将在ES6的篇章介绍）
+          </p>
+          <h3 id="-2-proxy-defineproperty-">
+            *2. Proxy相比于defineProperty的优势
+          </h3>
+          <p>
+            Object.defineProperty的问题主要有三个：1、不能监听数组的变化；2、必须遍历对象的每个属性；3、必须深层遍历嵌套的对象
+          </p>
+          <p>
+            而Proxy的特点有：1、针对真个对象，而不是对象的某个属性，这样就不需要遍历对象；2、支持数组。Proxy的第二个参数可以有13中拦截方式，比Object.defineProperty更加丰富。
+          </p>
+          <h3 id="3-vue-">3. 常用的vue指令</h3>
+          <p>v-model：表单元素属性与数据双向绑定；</p>
+          <p>
+            v-if，v-show：条件渲染，v-show它只是CSS中的display显示隐藏，HTML元素仍然是存在的，而v-if为false的时候，页面中是不会有这个HTML元素生成；
+          </p>
+          <p>v-on：绑定事件的，用@代替；</p>
+          <p>v-text，v-html：类似js中innerText和innerHtml；</p>
+          <p>v-for：列表渲染；</p>
+          <p>
+            v-bind：动态绑定一个或多个特性，或一个组件prop到表达式，可用：替代；
+          </p>
+          <h3 id="-4-vue-">*4. Vue的双向数据绑定原理</h3>
+          <p>
+            vue是采用数据劫持结合发布者-订阅者模式的方式，通过Object.defineProperty来劫持各个属性的setter，getter，在数据变化时发布消息给订阅者，触发相应的监听回调。
+          </p>
+          <p>具体步骤：</p>
+          <ul>
+            <li>
+              <p>
+                需要Observer的数据对象进行递归遍历，包括子属性对象的属性，用Object.defineProperty都加上setter和getter。这样的话，给这个对象的某个值赋值时，就会触发setter，那么就能监听到数据的变化。
+              </p>
+            </li>
+            <li>
+              <p>
+                compile解析模板指令，将模板中的变量替换成数据，然后初始化渲染页面视图，并将每个指令对应的节点绑定更新函数，添加监听数据的订阅者，一旦数据有变化，收到通知，更新视图。
+              </p>
+            </li>
+            <li>
+              <p>
+                Watcher订阅者是Observer和Compile之间的通信桥梁，主要做的事情是：
+              </p>
+              <p>1、在自身实例化的时候往属性订阅者里添加自己；</p>
+              <p>2、自身必须有一个update方法；</p>
+              <p>
+                3、待属性变动dep.notice通知时，能调用自身的update方法，并触发compile中绑定的回调
+              </p>
+            </li>
+            <li>
+              <p>
+                MVVM作为数据绑定的入口，整合Observer、Compile和Watcher三者，通过Observer来监听自己model数据变化，通过Compile来解析编译模板指令，最终利用Watcher搭起Observer和Compile之间的通信桥梁，达到数据变化，视图更新；视图交互变化，数据model变化的双向绑定效果
+              </p>
+            </li>
+          </ul>
+          <h3 id="-5-vue-">*5. Vue的生命周期</h3>
+          <p>
+            vue生命周期表示一个vue实例从创建到销毁的过程，这个过程一共分成四个阶段，创建阶段，挂载阶段，更新阶段和销毁阶段。<strong>创建阶段</strong>在new
+            vue()的对象中，先执行了init，对生命周期中的钩子函数与生命周期进行初始化，在init的过程中，我们首先可以调用beforeCreate这个钩子函数。然后再把data数据通过object.defineProperty注入vue实例中做成响应式数据，完成之后，我们可以调用created钩子函数。在数据初始化并注入完成之后，它会去判断vue实例中传入的数据是否有el属性，如果没有，它会调用vm.$mount(el)这个方法，再执行下一步，判断是否含有template属性，如果有，它会编译模板，创建一个render函数，如果没有，则把el对应的html代码编译成模板。此时可以调用beforeMount。然后进入<strong>挂载阶段</strong>，挂载阶段会根据这个模板把我们数据渲染好，渲染完成之后它会创建vm.$el，用这个因创建的元素，把页面的el替换，这个时候我们就能看到页面上有数据的html元素，此时我们可以调用mounted。<strong>更新阶段</strong>是当数据发生更新，vue监听到数据的变化，重新渲染虚拟DOM对页面内容进行更新，这个阶段发生前后我们可以调用beforeUpdate和updated。当vm.$destory()被调用时，就进入<strong>销毁阶段</strong>，销毁阶段会将所有和当前vue实例相关的资源释放掉。在销毁阶段前后我们可以调用beforeDestroy和destoryed。这个阶段无法自动把定时器延时器以及异步操作的代码释放掉，所以我们需要手动调用destoryed这个钩子函数释放。这样一个vue实例的生命周期就完成
+          </p>
+          <h3 id="6-">6. 事件修饰符</h3>
+          <p>
+            .stop：阻止事件冒泡；.self：只有自己可以触发；.prevent：阻止事件默认行为；.once：只触发一次；.capture：阻止事件捕获
+          </p>
+          <h3 id="7-">7. 按键修饰符，系统修饰键自行百度</h3>
+          <h3 id="8-vue-set-vm-set">
+            8. 向响应式对象中添加一个属性，使属性同样是响应式：Vue.set/vm.$set
+          </h3>
+          <p>Vue.set(target，propertyName/index，value)</p>
+          <p>
+            参数：target：Object|Array；propertyName/index：string|number；value：any
+          </p>
+          <p>
+            因为Vue无法探测普通的新增属性，所以必须使用这个方法向响应式对象上添加新属性，向响应式对象中添加一个属性，并确保这个新属性同样是响应式的，且触发视图更新
+          </p>
+          <h3 id="9-vue-nexttick-vm-nexttick">
+            9. 访问更新后的数据：Vue.nextTick/vm.$nextTick
+          </h3>
+          <p>Vue.nextTick([callback，context])</p>
+          <h3 id="10-vue-directive">10. 注册或获取全局指令：Vue.directive</h3>
+          <p>Vue.directive(id，[definition])</p>
+          <p>directive:{}可以局部注册</p>
+          <p>钩子函数如下：</p>
+          <p>insert：当当前指令所在的元素被插入到页面时执行；</p>
+          <p>bind：当vue要对当前指令所在的元素进行解析的时候；</p>
+          <p>update：当当前指令绑定的数据发生变化的时候；</p>
+          <p>componentUpdate：当数据改变完成，元素更新完毕之后；</p>
+          <p>unbind：当指令被卸载的时候</p>
+          <p>在自定义指令中的钩子函数可以获取的相关信息：</p>
+          <p>
+            name:当前指令名；rowname:带V的指令吗；expression:等号后面的表达式；arg:指令参数；
+            modifiers:指令修饰等，这是一个对象，修饰符都会被作为属性存在这个对象中，属性值为true；value:表达式的值
+          </p>
+          <p>
+            <img
+              src="C:\Users\Administrator\Desktop\笔记用图\binding的属性.png"
+              alt="binding的属性"
+            />
+          </p>
+          <h3 id="11-vue-">11. vue组件通信之父传子</h3>
+          <p>
+            父组件中子组件调用，使用v-bind绑定传递的值，子组件中props里可以获取
+          </p>
+          <pre><code>父组件：
     &lt;input type=&quot;text&quot; v-model=&quot;msg&quot; /&gt;
     &lt;son :msgFromFather=&quot;msg&quot;&gt;&lt;/son&gt;
 子组件：
     export default {
           props: [&quot;msgFromFather&quot;]
     };
-</code></pre><h3 id="12-vue-">12. vue组件通信之子传父</h3>
-<p>子组件触发某个事件，事件里通过$emit将父组件上的事件与传递的数据绑定，</p>
-<p>父组件中子组件绑定一个事件，这个事件就能拿到传递来的数据</p>
-<pre><code>父组件：
+</code></pre>
+          <h3 id="12-vue-">12. vue组件通信之子传父</h3>
+          <p>
+            子组件触发某个事件，事件里通过$emit将父组件上的事件与传递的数据绑定，
+          </p>
+          <p>父组件中子组件绑定一个事件，这个事件就能拿到传递来的数据</p>
+          <pre><code>父组件：
     &lt;son1 @msgFromSon=&quot;msgFromSon&quot; /&gt;
     methods：{
         msgFromSon(msg){
@@ -140,11 +214,12 @@
 子组件：某个事件里{
             this.$emit(&#39;msgFromSon&#39;,this.msg)
             }
-</code></pre><h3 id="13-vue-">13. vue组件通信之兄弟</h3>
-<p>入口文件main.js创建一个空vue实例bus，同时暴露给window</p>
-<p>兄弟1，在某个事件中利用bus.$emit将传递的数据与事件绑定</p>
-<p>兄弟2，创建阶段，利用bus.$on绑定某个事件，事件内拿到传递的数据</p>
-<pre><code>main.js:
+</code></pre>
+          <h3 id="13-vue-">13. vue组件通信之兄弟</h3>
+          <p>入口文件main.js创建一个空vue实例bus，同时暴露给window</p>
+          <p>兄弟1，在某个事件中利用bus.$emit将传递的数据与事件绑定</p>
+          <p>兄弟2，创建阶段，利用bus.$on绑定某个事件，事件内拿到传递的数据</p>
+          <pre><code>main.js:
     const bus = new Vue({})
     window.bus = bus
 兄弟1：
@@ -157,42 +232,59 @@
             // msg为传递的数据
         })
     }
-</code></pre><h3 id="14-dom-refs">14. 获取DOM元素：$refs</h3>
-<p>在子组件或者DOM元素上加上ref属性，属性值为名字，可以通过$refs.名字获取到这个子组件或者DOM元素上的数据</p>
-<h3 id="-15-vue-router-">*15.  vue-router有哪几种导航守卫</h3>
-<ul>
-<li><p>全局守卫</p>
-<ol>
-<li>beforeEach：全局前置守卫，进入路由之前；</li>
-<li>beforeResolve：全局解析守卫，beforeRouterEnter调用之后；</li>
-<li>afterRouter：全局后置守卫，进入路由之后；</li>
-</ol>
-</li>
-<li><p>路由独享守卫</p>
-<p>如果不想要全局配置守卫，就可以为某些路由单独配置守卫</p>
-</li>
-<li><p>路由组件内的守卫</p>
-<p>主要有三种：beforeRouterEnter、beforeRouterUpdate、beforeRouterLeave。他们直接在路由组件内部进行定义</p>
-</li>
-</ul>
-<h3 id="-16-vue-router-">*16. vue-router路由的两种模式</h3>
-<ol>
-<li>hash模式：在浏览器中符号“#”，“#”以及“#”后面的字符称之为hash，用window.location.hash读取</li>
-<li>history模式：history采用HTML5新特性，且提供了两个新方法：pushState()，replaceState()可以对浏览器的历史记录栈进行修改，以及popState事件的监听到状态变更，这个模式需要后台配置支持</li>
-</ol>
-<h3 id="17-">17.  路由参数的获取</h3>
-<p>this.$route.query：获取路由？传递参数；</p>
-<p>this.$route.params：获取动态路由传递的参数/:id/:name/:age</p>
-<h3 id="18-vue-cli-">18. vue-cli脚手架</h3>
-<p>安装：npm i -g @vue/cli</p>
-<p>创建项目：vue create 项目名</p>
-<h3 id="19-v-slot-">19. v-slot插槽自行百度</h3>
-<h3 id="20-prop-">20. prop类型校验</h3>
-<p>开发组件供他人使用时，我们给需要的prop的值指定类型，避免他人传入错误类型的数据</p>
-<p>一般我们看到的prop都是以字符串数组形式列出</p>
-<pre><code>props:[&#39;title&#39;,&#39;like&#39;,&#39;isPublished&#39;]
-</code></pre><p>指定类型时，以对象形式列出</p>
-<pre><code>props:{
+</code></pre>
+          <h3 id="14-dom-refs">14. 获取DOM元素：$refs</h3>
+          <p>
+            在子组件或者DOM元素上加上ref属性，属性值为名字，可以通过$refs.名字获取到这个子组件或者DOM元素上的数据
+          </p>
+          <h3 id="-15-vue-router-">*15. vue-router有哪几种导航守卫</h3>
+          <ul>
+            <li>
+              <p>全局守卫</p>
+              <ol>
+                <li>beforeEach：全局前置守卫，进入路由之前；</li>
+                <li>
+                  beforeResolve：全局解析守卫，beforeRouterEnter调用之后；
+                </li>
+                <li>afterRouter：全局后置守卫，进入路由之后；</li>
+              </ol>
+            </li>
+            <li>
+              <p>路由独享守卫</p>
+              <p>如果不想要全局配置守卫，就可以为某些路由单独配置守卫</p>
+            </li>
+            <li>
+              <p>路由组件内的守卫</p>
+              <p>
+                主要有三种：beforeRouterEnter、beforeRouterUpdate、beforeRouterLeave。他们直接在路由组件内部进行定义
+              </p>
+            </li>
+          </ul>
+          <h3 id="-16-vue-router-">*16. vue-router路由的两种模式</h3>
+          <ol>
+            <li>
+              hash模式：在浏览器中符号“#”，“#”以及“#”后面的字符称之为hash，用window.location.hash读取
+            </li>
+            <li>
+              history模式：history采用HTML5新特性，且提供了两个新方法：pushState()，replaceState()可以对浏览器的历史记录栈进行修改，以及popState事件的监听到状态变更，这个模式需要后台配置支持
+            </li>
+          </ol>
+          <h3 id="17-">17. 路由参数的获取</h3>
+          <p>this.$route.query：获取路由？传递参数；</p>
+          <p>this.$route.params：获取动态路由传递的参数/:id/:name/:age</p>
+          <h3 id="18-vue-cli-">18. vue-cli脚手架</h3>
+          <p>安装：npm i -g @vue/cli</p>
+          <p>创建项目：vue create 项目名</p>
+          <h3 id="19-v-slot-">19. v-slot插槽自行百度</h3>
+          <h3 id="20-prop-">20. prop类型校验</h3>
+          <p>
+            开发组件供他人使用时，我们给需要的prop的值指定类型，避免他人传入错误类型的数据
+          </p>
+          <p>一般我们看到的prop都是以字符串数组形式列出</p>
+          <pre><code>props:[&#39;title&#39;,&#39;like&#39;,&#39;isPublished&#39;]
+</code></pre>
+          <p>指定类型时，以对象形式列出</p>
+          <pre><code>props:{
     title:String,
     //多个类型
     like:[String,Number],
@@ -207,63 +299,86 @@
         default:100
     }
 }
-</code></pre><h3 id="21-v-model-sync-">21. 当无法使用v-model，使用.sync修饰符</h3>
-<p>使用v-bind绑定属性，然后使用.sync修饰符，也可以实现双向绑定</p>
-<pre><code>:msg.sync=&quot;msg&quot;
-</code></pre><h3 id="-22-vue-computed-">*22. Vue里面computed是什么东西怎么用</h3>
-<p>在vue模板中使用表达式是非常便利的，但设计它的初衷是用来进行简单运算的。在实际开发中在模板里放入过多的表达式会使项目的可维护性大大降低。对于复杂计算的数据，我们就使用计算属性来解决，当计算属性中的值发生变化的时候，计算属性也会更新</p>
-<h3 id="-23-vue-watch-">*23. Vue里面的watch是什么东西怎么用</h3>
-<p>实际开发过程中需要一些自定义的监听器，当需要在执行异步或者一些开销比较大的操作中，监听器会比计算属性更加有效</p>
-<h3 id="-24-watch-computed-">*24. watch和computed的区别</h3>
-<p>计算属性和监听属性都是希望在依赖数据发生变化的时候，被依赖的数据根据事先设定好的函数发生自动的变换。</p>
-<p>watch 一个数据响应多个数据变化进行操作</p>
-<p>computed一个数据受到多个数据的影响</p>
-<h3 id="-25-vue-keep-alive-">*25. vue中keep-alive组件的作用</h3>
-<p>主要用于保留组件状态或避免重新渲染，组件切换调用的时候本身会被销毁掉，只要加上keep-alive进行包裹，就不会被销毁，而是被缓存起来，下一次使用的时候就会从缓存中快速渲染，而不是重新渲染</p>
-<h3 id="-26-vue-data-">*26. vue组件里面data为什么必须是一个函数</h3>
-<ol>
-<li>如果使用的data是一个对象，那么每次创建组件实例的时候，都会引用这个data对象，所有实例用到的都是同一个，又由于data对象是一个引用类型的数据，那么就会导致，一个实例里面对data修改，其他实例都会受到影响。</li>
-<li>如果data是个函数，那么在每次创建组件实例的时候，都会调用这个函数，生成一个新的对象，那么所有的对象都有自己独立的data，互相不影响</li>
-</ol>
-<h3 id="27-filter">27. 过滤器filter</h3>
-<p>常用于处理数据，文本格式化。用在<strong>双花括号插值</strong>和<strong>v-bind表达式</strong>用|代替</p>
-<pre><code>{{message|captalize}}
+</code></pre>
+          <h3 id="21-v-model-sync-">21. 当无法使用v-model，使用.sync修饰符</h3>
+          <p>使用v-bind绑定属性，然后使用.sync修饰符，也可以实现双向绑定</p>
+          <pre><code>:msg.sync=&quot;msg&quot;
+</code></pre>
+          <h3 id="-22-vue-computed-">*22. Vue里面computed是什么东西怎么用</h3>
+          <p>
+            在vue模板中使用表达式是非常便利的，但设计它的初衷是用来进行简单运算的。在实际开发中在模板里放入过多的表达式会使项目的可维护性大大降低。对于复杂计算的数据，我们就使用计算属性来解决，当计算属性中的值发生变化的时候，计算属性也会更新
+          </p>
+          <h3 id="-23-vue-watch-">*23. Vue里面的watch是什么东西怎么用</h3>
+          <p>
+            实际开发过程中需要一些自定义的监听器，当需要在执行异步或者一些开销比较大的操作中，监听器会比计算属性更加有效
+          </p>
+          <h3 id="-24-watch-computed-">*24. watch和computed的区别</h3>
+          <p>
+            计算属性和监听属性都是希望在依赖数据发生变化的时候，被依赖的数据根据事先设定好的函数发生自动的变换。
+          </p>
+          <p>watch 一个数据响应多个数据变化进行操作</p>
+          <p>computed一个数据受到多个数据的影响</p>
+          <h3 id="-25-vue-keep-alive-">*25. vue中keep-alive组件的作用</h3>
+          <p>
+            主要用于保留组件状态或避免重新渲染，组件切换调用的时候本身会被销毁掉，只要加上keep-alive进行包裹，就不会被销毁，而是被缓存起来，下一次使用的时候就会从缓存中快速渲染，而不是重新渲染
+          </p>
+          <h3 id="-26-vue-data-">*26. vue组件里面data为什么必须是一个函数</h3>
+          <ol>
+            <li>
+              如果使用的data是一个对象，那么每次创建组件实例的时候，都会引用这个data对象，所有实例用到的都是同一个，又由于data对象是一个引用类型的数据，那么就会导致，一个实例里面对data修改，其他实例都会受到影响。
+            </li>
+            <li>
+              如果data是个函数，那么在每次创建组件实例的时候，都会调用这个函数，生成一个新的对象，那么所有的对象都有自己独立的data，互相不影响
+            </li>
+          </ol>
+          <h3 id="27-filter">27. 过滤器filter</h3>
+          <p>
+            常用于处理数据，文本格式化。用在<strong>双花括号插值</strong>和<strong>v-bind表达式</strong>用|代替
+          </p>
+          <pre><code>{{message|captalize}}
 &lt;div v-bind:id=&quot;rawId | formatId&quot;&gt;&lt;/div&gt;
-</code></pre><p>局部注册</p>
-<pre><code>filters：{
+</code></pre>
+          <p>局部注册</p>
+          <pre><code>filters：{
     captalize：function(value){
         if(!value) return &quot;&quot;
         return &#39;123&#39;+value
     }
 }
-</code></pre><p>全局注册</p>
-<pre><code>Vue.filter(&#39;formatId&#39;,function(id){
+</code></pre>
+          <p>全局注册</p>
+          <pre><code>Vue.filter(&#39;formatId&#39;,function(id){
     if(!id) return &quot;&quot;
     return &#39;2020&#39;+id
 })
 
-</code></pre><h2 id="vuex">VUEX</h2>
-<h3 id="-1-vuex-">*1. Vuex是什么？怎么使用？哪些功能场景使用它？</h3>
-<p>Vuex是专门为Vue应用程序开发的状态管理器，采用集中式存储管理应用的所有组件的状态。</p>
-<p>state：Vues Store实例的根状态对象，用于定义共享的状态变量；</p>
-<p>action：向store发出调用通知，执行本地或者远端的某一个操作；</p>
-<p>mutaions：只用于修改state中定义的状态变量；</p>
-<p>getter：外部程序通过它获取变量的具体值，或者在取值前做一些计算；</p>
-<p>使用场景：</p>
-<ul>
-<li>数据需要在多个组件里面来回调用</li>
-<li>全局都要使用的方法，并且方法是需要保存不被浏览器清理掉</li>
-<li>组件需要保存的数据</li>
-</ul>
-<h3 id="-2-vuex-">*2. VueX页面刷新数据丢失问题怎么解决</h3>
-<ul>
-<li>使用localStorage实时保存vuex数据</li>
-<li>使用vuex-along插件</li>
-</ul>
-<h3 id="3-vuex-">3. VueX的创建</h3>
-<p>安装：npm i vuex</p>
-<p>在src文件夹中创建一个store文件夹，里面index.js文件</p>
-<pre><code>import Vue from &#39;vue&#39;
+</code></pre>
+          <h2 id="vuex">VUEX</h2>
+          <h3 id="-1-vuex-">*1. Vuex是什么？怎么使用？哪些功能场景使用它？</h3>
+          <p>
+            Vuex是专门为Vue应用程序开发的状态管理器，采用集中式存储管理应用的所有组件的状态。
+          </p>
+          <p>state：Vues Store实例的根状态对象，用于定义共享的状态变量；</p>
+          <p>action：向store发出调用通知，执行本地或者远端的某一个操作；</p>
+          <p>mutaions：只用于修改state中定义的状态变量；</p>
+          <p>
+            getter：外部程序通过它获取变量的具体值，或者在取值前做一些计算；
+          </p>
+          <p>使用场景：</p>
+          <ul>
+            <li>数据需要在多个组件里面来回调用</li>
+            <li>全局都要使用的方法，并且方法是需要保存不被浏览器清理掉</li>
+            <li>组件需要保存的数据</li>
+          </ul>
+          <h3 id="-2-vuex-">*2. VueX页面刷新数据丢失问题怎么解决</h3>
+          <ul>
+            <li>使用localStorage实时保存vuex数据</li>
+            <li>使用vuex-along插件</li>
+          </ul>
+          <h3 id="3-vuex-">3. VueX的创建</h3>
+          <p>安装：npm i vuex</p>
+          <p>在src文件夹中创建一个store文件夹，里面index.js文件</p>
+          <pre><code>import Vue from &#39;vue&#39;
 import Vuex from &#39;vuex&#39;
 import modules from &#39;./modules&#39;
 import state from &#39;./state&#39;
@@ -282,39 +397,54 @@ const store = new Vuex.Store({
 })
 export default store
 
-</code></pre><p>在main.js中引入store，在vue实例中加入store</p>
-<h3 id="4-state">4. State</h3>
-<p>state用来存储数据的，通过this.$store.state获取vuex储存的数据</p>
-<pre><code>export default({})
-</code></pre><h3 id="5-getters">5. getters</h3>
-<p>getters类似计算属性</p>
-<pre><code>const getters = {
+</code></pre>
+          <p>在main.js中引入store，在vue实例中加入store</p>
+          <h3 id="4-state">4. State</h3>
+          <p>state用来存储数据的，通过this.$store.state获取vuex储存的数据</p>
+          <pre><code>export default({})
+</code></pre>
+          <h3 id="5-getters">5. getters</h3>
+          <p>getters类似计算属性</p>
+          <pre><code>const getters = {
     doneTodos: state=&gt;{
         return state.todos.filter(todo=&gt;todo.done)
     }
 }
 export default getters
-</code></pre><p>getters可以传参，但因为getters已经有一个参数state了，所以我们通过返回一个函数来传递参数</p>
-<pre><code>const getters={
+</code></pre>
+          <p>
+            getters可以传参，但因为getters已经有一个参数state了，所以我们通过返回一个函数来传递参数
+          </p>
+          <pre><code>const getters={
     getTodoById:state=&gt;id=&gt;{
         return state.todos.find(todo=&gt;todo.id===id)
     }
 }
-</code></pre><h3 id="6-mutations">6. mutations</h3>
-<p>处理数据的方法（同步）</p>
-<p>页面中通过this.$store. (&#39;函数名&#39;，参数)来触发对应的mutations</p>
-<p>mutations中的处理函数有两个参数：第一个state，第二个为传入的参数</p>
-<pre><code>export default{
+</code></pre>
+          <h3 id="6-mutations">6. mutations</h3>
+          <p>处理数据的方法（同步）</p>
+          <p>
+            页面中通过this.$store. (&#39;函数名&#39;，参数)来触发对应的mutations
+          </p>
+          <p>
+            mutations中的处理函数有两个参数：第一个state，第二个为传入的参数
+          </p>
+          <pre><code>export default{
     chang(state,data){
         state.data=data
     }
 }
-</code></pre><h3 id="7-actions">7. actions</h3>
-<p>actions可以进行异步方法，实际提交的还是mutations，而不是直接修改状态state</p>
-<p>actions中接收一个与store实例具有相同方法和属性的context对象，context.commit(&#39;函数名&#39;，参数)</p>
-<p>同样的，可以使用context.state与context.getters</p>
-<p>页面中通过this.$store.dispatch(&#39;函数名&#39;，参数)</p>
-<pre><code>//action.js
+</code></pre>
+          <h3 id="7-actions">7. actions</h3>
+          <p>
+            actions可以进行异步方法，实际提交的还是mutations，而不是直接修改状态state
+          </p>
+          <p>
+            actions中接收一个与store实例具有相同方法和属性的context对象，context.commit(&#39;函数名&#39;，参数)
+          </p>
+          <p>同样的，可以使用context.state与context.getters</p>
+          <p>页面中通过this.$store.dispatch(&#39;函数名&#39;，参数)</p>
+          <pre><code>//action.js
 getDate(context,params)=&gt;{
     return new Promise((resolve,reject)=&gt;{
         api.getDateApi(params)//请求
@@ -329,9 +459,12 @@ getDate(context,params)=&gt;{
 }
 //vue中
 this.$store.dispatch(&#39;getDate&#39;,params)
-</code></pre><h3 id="8-modules">8. modules</h3>
-<p>Vuex允许我们将store分割成module，每个模块都有自己的state，mutations，actions，getters</p>
-<pre><code>// 每个模块自己的store
+</code></pre>
+          <h3 id="8-modules">8. modules</h3>
+          <p>
+            Vuex允许我们将store分割成module，每个模块都有自己的state，mutations，actions，getters
+          </p>
+          <pre><code>// 每个模块自己的store
 // modules里面的index.js
 import moduleA from &#39;./moduleA&#39;
 import moduleB from &#39;./moduleB&#39;
@@ -341,9 +474,14 @@ const store = {
 }
 export default store
 
-</code></pre><h3 id="9-mapstate-mapgetters-mapactions-mapmutations">9. mapState，mapGetters，mapActions，mapMutations</h3>
-<p>每次组件中调用state，getters，actions，mutations都要写一个方法或者属性，然后通过$store调用，<strong>非常麻烦</strong>。</p>
-<pre><code>//引入
+</code></pre>
+          <h3 id="9-mapstate-mapgetters-mapactions-mapmutations">
+            9. mapState，mapGetters，mapActions，mapMutations
+          </h3>
+          <p>
+            每次组件中调用state，getters，actions，mutations都要写一个方法或者属性，然后通过$store调用，<strong>非常麻烦</strong>。
+          </p>
+          <pre><code>//引入
 import {mapState，mapGetters，mapActions，mapMutations} from vuex
 // 调用
 computed：{
@@ -354,117 +492,214 @@ methods：{
     ...mapActions([&quot;方法名&quot;]),
     ...mapMutations([&quot;方法名&quot;])
 }
-</code></pre><h2 id="react">React</h2>
-<h3 id="-1-real-dom-virtual-dom-">*1. Real Dom和Virtual Dom的区别</h3>
-<p>Virtual（虚拟）DOM是对Real（真实）DOM的一种模拟，相对于直接操作真实的DOM结构，我们构建一棵虚拟DOM树，将各种数据和操作直接应用在这棵虚拟DOM树上，然后再将虚拟DOM树的修改应用到真实DOM结构上。</p>
-<p>即使我们频繁操作虚拟DOM，我们只需要一定时刻一次性同步修改到真实DOM上，这样减少了DOM操作次数，性能上得到了提升。</p>
-<p>虚拟DOM无法直接更新HTML，如果元素更新，也只是更新JSX，而不是创建新的DOM，所以内存消耗更少。</p>
-<p>虚拟DOM最大的优点是它不依赖浏览器环境，能在node环境实现，可以使用虚拟DOM生成html字符串，实现SSR服务端渲染。</p>
-<h3 id="-2-ssr-">*2. SSR服务端渲染</h3>
-<p>SSR目的是为了解决SEO的问题，对于一般的页面来说SEO对于页面的影响不是很大，但是对于一些新闻，论坛类网站来说是致命的，因为框架类项目打包生成的页面是没有办法进行SEO的，所以他们的关键信息没有办法暴露出来。SSR的原理就是将框架类型的页面交给后端在服务器来渲染，然后发送到客户端，从而实现SEO</p>
-<h3 id="-3-react-react-">*3. 什么是React，React有什么特点，主要优点</h3>
-<p><strong>React</strong>是由Facebook内部的一个JavaScript库，用于构建用户界面，React本质上只关心两件事：1.更新DOM；2.响应事件。它不处理ajax、路由和数据储存，所以从MVC的角度，它更像是MVC中的V，视图层</p>
-<p><strong>React的特点</strong></p>
-<ol>
-<li>声明式设计，只需要描述页面的样子，React负责更新页面。</li>
-<li>React使用虚拟DOM，最大限度的减少与DOM的交互。可以对虚拟DOM多次操作，而只需要一次同步修改到真实DOM上，提升性能。</li>
-<li>它不依赖浏览器环境，能在node环境实现，所以可以用在服务器端渲染。</li>
-<li>通过React构建组件，使得代码更加容易复用，能够很好的应用在大项目开发中。</li>
-<li>遵循单向数据流。</li>
-</ol>
-<p><strong>主要优点</strong></p>
-<ol>
-<li>提高了应用的性能</li>
-<li>方便在客户端与服务器端使用</li>
-<li>由于使用了JSX，代码可读性很好</li>
-</ol>
-<h3 id="-4-jsx">*4. 什么是JSX</h3>
-<p>JSX本质上就是JavaScript中的对象，虽然JSX看起来像HTML，但实际只是一种更加方便的创建模板的方式，底层实际上转化为React.createElement()来编写声明。当组件渲染时，JSX会表示成DOM节点的抽象描述，并最终转化为实际的DOM进行渲染</p>
-<h3 id="-5-virtual-dom-">*5. 你了解Virtual Dom吗？解释一下它的工作原理</h3>
-<p>虚拟DOM本质是一个JavaScript对象，它最初只是真实DOM的副本，它是一个节点树。</p>
-<p>工作原理简单的三步：</p>
-<ol>
-<li>当底层数据发生变化时，重新根据新的数据创建新的虚拟DOM树。</li>
-<li>然后与之前的虚拟DOM对象，进行diff算法对比，找到之间的差异，得到需要更新的内容。</li>
-<li>最终根据变化的内容更新真实DOM。</li>
-</ol>
-<h3 id="-6-diff-">*6. diff算法</h3>
-<ol>
-<li>如果两个根元素类型不同，React会销毁旧树，创建新树。</li>
-<li>对于类型相同的React DOM元素，React会对比两者的属性是否相同，只更新不同的属性，当处理完这个DOM节点，React会递归处理子节点。</li>
-<li>在子节点后面添加一个节点，React对前面的子节点原封不动在它后面创建一个节点，但如果在开始位置插入一个元素，则会删除第一个然后新建一个，第二个不一样又接着删除重建，以此类推。改变每一个不同的节点，而不是复用。</li>
-</ol>
-<p>所以React提供了一个key属性，React会通过key来匹配原始树和后来的树。</p>
-<h3 id="-7-jsx">*7. 为什么浏览器无法读取JSX</h3>
-<p>浏览器只能处理JavaScript对象，而不能读取常规JavaScript对象中的JSX。所以为了使浏览器能够读取JSX，首先需要使用像babel这样的JSX转换器将JSX文件转换成JavaScript对象，然后再将其传给浏览器</p>
-<h3 id="-8-react-render-">*8. 解释React中render()的目的</h3>
-<p>每个React组件强制要求必须有一个render()。它返回一个React元素，是原生DOM组件的表示。如果需要渲染多个HTML元素，则必须将它们组合在一个封闭标签内。此函数必须保持纯净，即必须每次调用时都返回相同的结果。</p>
-<h3 id="-9-props">*9. 什么是props</h3>
-<p>props是一个从外部传进组件的参数，主要作为从父组件向子组件传递数据，它具有只读性和不变性，只能通过外部组件主动传入新的props来重新渲染子组件，否则子组件的props以及展示形式不会改变</p>
-<h3 id="-10-react-">*10. React中的状态是什么？它是如何使用的</h3>
-<p>状态state主要作用是用于组件保存、控制以及修改自己的状态，它只能在constructor中初始化，它是组件的私有属性，不可通过外部访问和修改，只能通过组件内部的this.setState来修改，修改state属性会导致组件的重新渲染</p>
-<h3 id="-11-setstate-">*11. 调用setState之后都发生了什么</h3>
-<p>在代码中调用setState函数之后，React会将传入的参数对象与组件当前的状态合并，然后触发所谓的调和过程。经过调和过程，React会以相对高效的方式根据新的状态构建React元素树并且着手重新渲染整个UI界面。在React得到元素树之后，React会自动计算出新的树与老树的节点差异，然后根据差异对界面进行最小化重渲染。在差异计算算法中，React能够相对精确地知道哪些位置发生了改变以及应该如何改变，这就是保证了按需求更新，而不是全部重新渲染</p>
-<h3 id="-12-react-">*12.React中什么时候是同步的，什么时候是异步的？</h3>
-<p>在React中，如果是由React引起的事件处理（比如通过onClick引发的事件处理），调用setState不会立即更新this.state，除此之外的setState调用会同步执行this.state。所谓“除此之外”，指的是绕过React通过addEventListener直接添加的时间处理函数，还有通过setTimeout/setInterval产生的异步调用。</p>
-<p>原因：在React的setState函数实现中，会根据一个变量isBatchingUpdates判断是直接更新this.state还是放在队列中回头再说，而isBatchingUpdates默认是false，也就表示setState会同步更新this.state，但是，有一个函数batchedUpdates，这个函数会把isBatchingUpdates修改为true，而当React在调用事件处理函数之前就会调用这个batchedUpdates，造成的后果，就是有React控制的事件处理过程setState不会同步更新this.state</p>
-<h3 id="-13-react-">*13. React中的箭头函数是什么？怎么用</h3>
-<p>箭头函数是ES6中的一种用于编写函数表达式的简短语法。箭头函数不会在函数体内重新定义this的值，所以在回调中的this指向更容易预测。将像setState放在处理函数中时，this.setState()的this是指向undefined。此时用箭头函数可以解决这个问题</p>
-<h3 id="-14-">*14. 有状态组件与无状态组件</h3>
-<p>有状态组件主要用来定义交互逻辑和业务逻辑，有自己的状态，负责更新；</p>
-<p>无状态组件主要用于定义模板，将接收来的数据展示出来</p>
-<h3 id="-15-react-">*15. React组件生命周期的阶段是什么</h3>
-<p>React组件的生命周期有三个不同的阶段</p>
-<ol>
-<li><p><strong>挂载阶段</strong>：当组件实例被创建并插入DOM中时，其生命周期调用顺序</p>
-</li>
-<li><p>getDefaultProps()：获取实例的默认属性</p>
-</li>
-<li>getInitialState()：获取每个实例的初始化状态</li>
-<li>constructor()：为生命周期的钩子函数绑定this</li>
-<li>componentWillMount()：组件即将被挂载、渲染到页面上</li>
-<li>render()：组件在这里生成虚拟的DOM节点，这里不能调用setState，因为每次调用setState都会重新渲染</li>
-<li><p>componentDidMount()：组件真正在被挂载之后，仅在第一次渲染后在客户端执行，这个时候我们可以发送网络请求，并进行DOM操作</p>
-</li>
-<li><p><strong>更新阶段</strong>：当组件的props或state发生变化时会触发更新。组件更新的生命周期调用顺序：</p>
-</li>
-<li><p>componentWillReceiveProps()：组件将要接收到属性的时候调用</p>
-</li>
-<li>shouldComponentUpdate()：组件接收到新属性或者新状态的时候</li>
-<li>render()：组件重新描绘</li>
-<li><p>componentDidUpdate()：组件已更新时，这个时候我们也可以发送网络请求，并进行DOM操作，这里也可以调用setState方法，但要做个if判断，防止一直更新，调死程序</p>
-</li>
-<li><p><strong>卸载阶段</strong>：当组件从DOM中移除时，调用</p>
-</li>
-<li><p>componentWillUnmount()：组件即将销毁，用于清理内存空间，比如定时器</p>
-</li>
-</ol>
-<h3 id="-16-react-">*16. 详细解释React组件的生命周期方法</h3>
-<ul>
-<li><strong>componentDidMount()</strong>：仅在第一次渲染后在客户端执行，这个时候我们会发送网络请求或者进行DOM操作</li>
-<li><strong>shouldComponentUpdate()</strong>：根据特定条件返回true或false。如果你希望更新组件，就返回true</li>
-<li><strong>componentDidUpdate()</strong>：在渲染发生后立即调用，这个时候我们会发送网络请求或者进行DOM操作</li>
-<li><strong>componentWillUnmount()</strong>：从DOM卸载组件后调用。用于清理内存空间，比如定时器</li>
-</ul>
-<h3 id="17-componentdidupdate">17. componentDidUpdate</h3>
-<pre><code>componentDidUpdate(prevProps,prevState,snapshot){
+</code></pre>
+          <h2 id="react">React</h2>
+          <h3 id="-1-real-dom-virtual-dom-">*1. Real Dom和Virtual Dom的区别</h3>
+          <p>
+            Virtual（虚拟）DOM是对Real（真实）DOM的一种模拟，相对于直接操作真实的DOM结构，我们构建一棵虚拟DOM树，将各种数据和操作直接应用在这棵虚拟DOM树上，然后再将虚拟DOM树的修改应用到真实DOM结构上。
+          </p>
+          <p>
+            即使我们频繁操作虚拟DOM，我们只需要一定时刻一次性同步修改到真实DOM上，这样减少了DOM操作次数，性能上得到了提升。
+          </p>
+          <p>
+            虚拟DOM无法直接更新HTML，如果元素更新，也只是更新JSX，而不是创建新的DOM，所以内存消耗更少。
+          </p>
+          <p>
+            虚拟DOM最大的优点是它不依赖浏览器环境，能在node环境实现，可以使用虚拟DOM生成html字符串，实现SSR服务端渲染。
+          </p>
+          <h3 id="-2-ssr-">*2. SSR服务端渲染</h3>
+          <p>
+            SSR目的是为了解决SEO的问题，对于一般的页面来说SEO对于页面的影响不是很大，但是对于一些新闻，论坛类网站来说是致命的，因为框架类项目打包生成的页面是没有办法进行SEO的，所以他们的关键信息没有办法暴露出来。SSR的原理就是将框架类型的页面交给后端在服务器来渲染，然后发送到客户端，从而实现SEO
+          </p>
+          <h3 id="-3-react-react-">
+            *3. 什么是React，React有什么特点，主要优点
+          </h3>
+          <p>
+            <strong>React</strong
+            >是由Facebook内部的一个JavaScript库，用于构建用户界面，React本质上只关心两件事：1.更新DOM；2.响应事件。它不处理ajax、路由和数据储存，所以从MVC的角度，它更像是MVC中的V，视图层
+          </p>
+          <p><strong>React的特点</strong></p>
+          <ol>
+            <li>声明式设计，只需要描述页面的样子，React负责更新页面。</li>
+            <li>
+              React使用虚拟DOM，最大限度的减少与DOM的交互。可以对虚拟DOM多次操作，而只需要一次同步修改到真实DOM上，提升性能。
+            </li>
+            <li>
+              它不依赖浏览器环境，能在node环境实现，所以可以用在服务器端渲染。
+            </li>
+            <li>
+              通过React构建组件，使得代码更加容易复用，能够很好的应用在大项目开发中。
+            </li>
+            <li>遵循单向数据流。</li>
+          </ol>
+          <p><strong>主要优点</strong></p>
+          <ol>
+            <li>提高了应用的性能</li>
+            <li>方便在客户端与服务器端使用</li>
+            <li>由于使用了JSX，代码可读性很好</li>
+          </ol>
+          <h3 id="-4-jsx">*4. 什么是JSX</h3>
+          <p>
+            JSX本质上就是JavaScript中的对象，虽然JSX看起来像HTML，但实际只是一种更加方便的创建模板的方式，底层实际上转化为React.createElement()来编写声明。当组件渲染时，JSX会表示成DOM节点的抽象描述，并最终转化为实际的DOM进行渲染
+          </p>
+          <h3 id="-5-virtual-dom-">
+            *5. 你了解Virtual Dom吗？解释一下它的工作原理
+          </h3>
+          <p>
+            虚拟DOM本质是一个JavaScript对象，它最初只是真实DOM的副本，它是一个节点树。
+          </p>
+          <p>工作原理简单的三步：</p>
+          <ol>
+            <li>当底层数据发生变化时，重新根据新的数据创建新的虚拟DOM树。</li>
+            <li>
+              然后与之前的虚拟DOM对象，进行diff算法对比，找到之间的差异，得到需要更新的内容。
+            </li>
+            <li>最终根据变化的内容更新真实DOM。</li>
+          </ol>
+          <h3 id="-6-diff-">*6. diff算法</h3>
+          <ol>
+            <li>如果两个根元素类型不同，React会销毁旧树，创建新树。</li>
+            <li>
+              对于类型相同的React
+              DOM元素，React会对比两者的属性是否相同，只更新不同的属性，当处理完这个DOM节点，React会递归处理子节点。
+            </li>
+            <li>
+              在子节点后面添加一个节点，React对前面的子节点原封不动在它后面创建一个节点，但如果在开始位置插入一个元素，则会删除第一个然后新建一个，第二个不一样又接着删除重建，以此类推。改变每一个不同的节点，而不是复用。
+            </li>
+          </ol>
+          <p>
+            所以React提供了一个key属性，React会通过key来匹配原始树和后来的树。
+          </p>
+          <h3 id="-7-jsx">*7. 为什么浏览器无法读取JSX</h3>
+          <p>
+            浏览器只能处理JavaScript对象，而不能读取常规JavaScript对象中的JSX。所以为了使浏览器能够读取JSX，首先需要使用像babel这样的JSX转换器将JSX文件转换成JavaScript对象，然后再将其传给浏览器
+          </p>
+          <h3 id="-8-react-render-">*8. 解释React中render()的目的</h3>
+          <p>
+            每个React组件强制要求必须有一个render()。它返回一个React元素，是原生DOM组件的表示。如果需要渲染多个HTML元素，则必须将它们组合在一个封闭标签内。此函数必须保持纯净，即必须每次调用时都返回相同的结果。
+          </p>
+          <h3 id="-9-props">*9. 什么是props</h3>
+          <p>
+            props是一个从外部传进组件的参数，主要作为从父组件向子组件传递数据，它具有只读性和不变性，只能通过外部组件主动传入新的props来重新渲染子组件，否则子组件的props以及展示形式不会改变
+          </p>
+          <h3 id="-10-react-">*10. React中的状态是什么？它是如何使用的</h3>
+          <p>
+            状态state主要作用是用于组件保存、控制以及修改自己的状态，它只能在constructor中初始化，它是组件的私有属性，不可通过外部访问和修改，只能通过组件内部的this.setState来修改，修改state属性会导致组件的重新渲染
+          </p>
+          <h3 id="-11-setstate-">*11. 调用setState之后都发生了什么</h3>
+          <p>
+            在代码中调用setState函数之后，React会将传入的参数对象与组件当前的状态合并，然后触发所谓的调和过程。经过调和过程，React会以相对高效的方式根据新的状态构建React元素树并且着手重新渲染整个UI界面。在React得到元素树之后，React会自动计算出新的树与老树的节点差异，然后根据差异对界面进行最小化重渲染。在差异计算算法中，React能够相对精确地知道哪些位置发生了改变以及应该如何改变，这就是保证了按需求更新，而不是全部重新渲染
+          </p>
+          <h3 id="-12-react-">
+            *12.React中什么时候是同步的，什么时候是异步的？
+          </h3>
+          <p>
+            在React中，如果是由React引起的事件处理（比如通过onClick引发的事件处理），调用setState不会立即更新this.state，除此之外的setState调用会同步执行this.state。所谓“除此之外”，指的是绕过React通过addEventListener直接添加的时间处理函数，还有通过setTimeout/setInterval产生的异步调用。
+          </p>
+          <p>
+            原因：在React的setState函数实现中，会根据一个变量isBatchingUpdates判断是直接更新this.state还是放在队列中回头再说，而isBatchingUpdates默认是false，也就表示setState会同步更新this.state，但是，有一个函数batchedUpdates，这个函数会把isBatchingUpdates修改为true，而当React在调用事件处理函数之前就会调用这个batchedUpdates，造成的后果，就是有React控制的事件处理过程setState不会同步更新this.state
+          </p>
+          <h3 id="-13-react-">*13. React中的箭头函数是什么？怎么用</h3>
+          <p>
+            箭头函数是ES6中的一种用于编写函数表达式的简短语法。箭头函数不会在函数体内重新定义this的值，所以在回调中的this指向更容易预测。将像setState放在处理函数中时，this.setState()的this是指向undefined。此时用箭头函数可以解决这个问题
+          </p>
+          <h3 id="-14-">*14. 有状态组件与无状态组件</h3>
+          <p>
+            有状态组件主要用来定义交互逻辑和业务逻辑，有自己的状态，负责更新；
+          </p>
+          <p>无状态组件主要用于定义模板，将接收来的数据展示出来</p>
+          <h3 id="-15-react-">*15. React组件生命周期的阶段是什么</h3>
+          <p>React组件的生命周期有三个不同的阶段</p>
+          <ol>
+            <li>
+              <p>
+                <strong>挂载阶段</strong
+                >：当组件实例被创建并插入DOM中时，其生命周期调用顺序
+              </p>
+            </li>
+            <li><p>getDefaultProps()：获取实例的默认属性</p></li>
+            <li>getInitialState()：获取每个实例的初始化状态</li>
+            <li>constructor()：为生命周期的钩子函数绑定this</li>
+            <li>componentWillMount()：组件即将被挂载、渲染到页面上</li>
+            <li>
+              render()：组件在这里生成虚拟的DOM节点，这里不能调用setState，因为每次调用setState都会重新渲染
+            </li>
+            <li>
+              <p>
+                componentDidMount()：组件真正在被挂载之后，仅在第一次渲染后在客户端执行，这个时候我们可以发送网络请求，并进行DOM操作
+              </p>
+            </li>
+            <li>
+              <p>
+                <strong>更新阶段</strong
+                >：当组件的props或state发生变化时会触发更新。组件更新的生命周期调用顺序：
+              </p>
+            </li>
+            <li>
+              <p>componentWillReceiveProps()：组件将要接收到属性的时候调用</p>
+            </li>
+            <li>shouldComponentUpdate()：组件接收到新属性或者新状态的时候</li>
+            <li>render()：组件重新描绘</li>
+            <li>
+              <p>
+                componentDidUpdate()：组件已更新时，这个时候我们也可以发送网络请求，并进行DOM操作，这里也可以调用setState方法，但要做个if判断，防止一直更新，调死程序
+              </p>
+            </li>
+            <li>
+              <p><strong>卸载阶段</strong>：当组件从DOM中移除时，调用</p>
+            </li>
+            <li>
+              <p>
+                componentWillUnmount()：组件即将销毁，用于清理内存空间，比如定时器
+              </p>
+            </li>
+          </ol>
+          <h3 id="-16-react-">*16. 详细解释React组件的生命周期方法</h3>
+          <ul>
+            <li>
+              <strong>componentDidMount()</strong
+              >：仅在第一次渲染后在客户端执行，这个时候我们会发送网络请求或者进行DOM操作
+            </li>
+            <li>
+              <strong>shouldComponentUpdate()</strong
+              >：根据特定条件返回true或false。如果你希望更新组件，就返回true
+            </li>
+            <li>
+              <strong>componentDidUpdate()</strong
+              >：在渲染发生后立即调用，这个时候我们会发送网络请求或者进行DOM操作
+            </li>
+            <li>
+              <strong>componentWillUnmount()</strong
+              >：从DOM卸载组件后调用。用于清理内存空间，比如定时器
+            </li>
+          </ul>
+          <h3 id="17-componentdidupdate">17. componentDidUpdate</h3>
+          <pre><code>componentDidUpdate(prevProps,prevState,snapshot){
     if(this.props.id !== prevProps.id){
         this.fetchData(this.props.id)
     }
 }
-</code></pre><h3 id="18-shouldcomponentupdate">18.  shouldComponentUpdate</h3>
-<pre><code>shouldComponentUpdate(nextProps,nextState){
+</code></pre>
+          <h3 id="18-shouldcomponentupdate">18. shouldComponentUpdate</h3>
+          <pre><code>shouldComponentUpdate(nextProps,nextState){
     if(this.props.id !== nextProps.id){
         return true
     }
     return false
 }
-</code></pre><h3 id="-19-react-">*19. React中的合成事件是什么</h3>
-<p>如果DOM上绑定了过多的事件处理函数，整个页面响应以及内存占用可能都会受到影响。React为了避免这类DOM事件滥用，同时屏蔽底层不同浏览器之间的事件系统差异，实现了一个中间层——合成事件</p>
-<p>原理：React并不是将事件绑定在真实DOM上，而是在document处监听所有支持的事件，当事件发生并冒泡到document处时，React将事件内容封装并交由真正的处理函数运行。React的事件对象并不是真实的原生事件对象，而是通过合成的方式实现了一个包含原生事件特性的模拟对象，但是可以实现相同的功能</p>
-<h3 id="-20-react-refs-">*#20. 你对React的refs有什么了解</h3>
-<p>refs提供了一种方式，允许我们访问DOM节点或者在render方法中创建的React元素</p>
-<pre><code>// 创建refs
+</code></pre>
+          <h3 id="-19-react-">*19. React中的合成事件是什么</h3>
+          <p>
+            如果DOM上绑定了过多的事件处理函数，整个页面响应以及内存占用可能都会受到影响。React为了避免这类DOM事件滥用，同时屏蔽底层不同浏览器之间的事件系统差异，实现了一个中间层——合成事件
+          </p>
+          <p>
+            原理：React并不是将事件绑定在真实DOM上，而是在document处监听所有支持的事件，当事件发生并冒泡到document处时，React将事件内容封装并交由真正的处理函数运行。React的事件对象并不是真实的原生事件对象，而是通过合成的方式实现了一个包含原生事件特性的模拟对象，但是可以实现相同的功能
+          </p>
+          <h3 id="-20-react-refs-">*#20. 你对React的refs有什么了解</h3>
+          <p>
+            refs提供了一种方式，允许我们访问DOM节点或者在render方法中创建的React元素
+          </p>
+          <pre><code>// 创建refs
 class MyComponent extends React.Component {
     constructor(props){
         super(props)
@@ -476,11 +711,17 @@ class MyComponent extends React.Component {
 }
 // 访问ref
 const node = this.myRef.current
-</code></pre><p>关于ref曾在工作中遇到bug，当时需要获取到DOM元素，想到了ref这个方法，满心欢喜的敲下代码后，控制台报错</p>
-<pre><code>_WEBPACK_IMPORTED_MODULE_0_recat_default.a.creatRef is not a function
-</code></pre><p>createRef不是一个方法？苦思冥想，借鉴百度，最后定位到问题是这个方式是React16.3+才有的，而公司在用的React版本还是16.2.0</p>
-<p>于是使用不了这个高大上的方法了，下面是React16.2.0使用ref的代码</p>
-<pre><code>// 创建refs
+</code></pre>
+          <p>
+            关于ref曾在工作中遇到bug，当时需要获取到DOM元素，想到了ref这个方法，满心欢喜的敲下代码后，控制台报错
+          </p>
+          <pre><code>_WEBPACK_IMPORTED_MODULE_0_recat_default.a.creatRef is not a function
+</code></pre>
+          <p>
+            createRef不是一个方法？苦思冥想，借鉴百度，最后定位到问题是这个方式是React16.3+才有的，而公司在用的React版本还是16.2.0
+          </p>
+          <p>于是使用不了这个高大上的方法了，下面是React16.2.0使用ref的代码</p>
+          <pre><code>// 创建refs
 class MyComponent extends React.Component {
     constructor(props){
         super(props)
@@ -491,8 +732,9 @@ class MyComponent extends React.Component {
 }
 // 访问ref
 const node = this.refs.myRef
-</code></pre><p>网上还有一种callback的ref形式</p>
-<pre><code>// 创建refs
+</code></pre>
+          <p>网上还有一种callback的ref形式</p>
+          <pre><code>// 创建refs
 class MyComponent extends React.Component {
     constructor(props){
         super(props)
@@ -505,33 +747,44 @@ class MyComponent extends React.Component {
 }
 // 访问ref
 const node = this.myRef
-</code></pre><p><strong>refs与函数组件</strong>（自行百度）</p>
-<h3 id="-21-">*21. 受控组件与非受控组件</h3>
-<ul>
-<li><p>受控组件无法维持自己的状态，数据由父组件控制，通过props获取当前值，并通过回调通知更改</p>
-</li>
-<li><p>表单的value值存在state上</p>
-</li>
-<li>表单元素绑定一个change事件，通过e获取DOM，修改state值</li>
-</ul>
-<p>多个表单元素优化</p>
-<ol>
-<li>每个表单元素定义一个name属性</li>
-<li>所有表单元素的change事件指向同一个处理函数</li>
-<li>处理函数通过e.target结果出name和value属性，this.setState({[name]:value})</li>
-<li><p>如果表单中有复选框，我们需要通过target.type === &#39;checkbox&#39;？checked：value</p>
-</li>
-<li><p>非受控组件保持着自己的状态，数据由DOM控制，用refs获取当前值</p>
-<p>参见refs</p>
-</li>
-</ol>
-<h3 id="22-react-">22. React组件通信之父传子</h3>
-<pre><code>// 父组件
+</code></pre>
+          <p><strong>refs与函数组件</strong>（自行百度）</p>
+          <h3 id="-21-">*21. 受控组件与非受控组件</h3>
+          <ul>
+            <li>
+              <p>
+                受控组件无法维持自己的状态，数据由父组件控制，通过props获取当前值，并通过回调通知更改
+              </p>
+            </li>
+            <li><p>表单的value值存在state上</p></li>
+            <li>表单元素绑定一个change事件，通过e获取DOM，修改state值</li>
+          </ul>
+          <p>多个表单元素优化</p>
+          <ol>
+            <li>每个表单元素定义一个name属性</li>
+            <li>所有表单元素的change事件指向同一个处理函数</li>
+            <li>
+              处理函数通过e.target结果出name和value属性，this.setState({[name]:value})
+            </li>
+            <li>
+              <p>
+                如果表单中有复选框，我们需要通过target.type ===
+                &#39;checkbox&#39;？checked：value
+              </p>
+            </li>
+            <li>
+              <p>非受控组件保持着自己的状态，数据由DOM控制，用refs获取当前值</p>
+              <p>参见refs</p>
+            </li>
+          </ol>
+          <h3 id="22-react-">22. React组件通信之父传子</h3>
+          <pre><code>// 父组件
 &lt;Child name={this.state.name} /&gt;
 // 子组件
 const name = this.props.name
-</code></pre><h3 id="23-react-">23. React组件通信之子传父</h3>
-<pre><code>// 子组件
+</code></pre>
+          <h3 id="23-react-">23. React组件通信之子传父</h3>
+          <pre><code>// 子组件
 class Child extends React.Component {
     constructor(props){
         super(props)
@@ -562,31 +815,42 @@ class Parent extends React.component {
         ) 
     }
 }
-</code></pre><h3 id="24-react-">24. React组件通信之兄弟通讯</h3>
-<p>状态提升，子1传父父传子2</p>
-<h3 id="25-react-context-">25. React组件通信之context跨组件</h3>
-<ol>
-<li>创建context并从中解构出Provider,Consumer</li>
-</ol>
-<pre><code>const { Provider,Consumer } = React.createContext()
-</code></pre><ol start="2">
-<li>用Provider包裹发送数据的组件，并给一个value属性</li>
-</ol>
-<pre><code>&lt;Provider value = {数据}&gt;
-</code></pre><ol start="3">
-<li>用Consumer包裹接收数据的组件</li>
-</ol>
-<pre><code>&lt;Consumer&gt;{data=&gt;&lt;p&gt;{data}&lt;/p&gt;}&lt;/Consumer&gt;
-</code></pre><p>自行百度，Redux真香</p>
-<h3 id="26-props-">26. Props深入</h3>
-<ol>
-<li><p><strong>children属性</strong>：获取组件标签的子节点，children与props属性相同，可以为任意值（文本、react元素、组件甚至是函数）</p>
-</li>
-<li><p><strong>props效验</strong>：封装公共组件时，约定添加props效验</p>
-<p>安装：yarn add prop-types </p>
-</li>
-</ol>
-<pre><code>import PropTypes from &#39;prop-types&#39;
+</code></pre>
+          <h3 id="24-react-">24. React组件通信之兄弟通讯</h3>
+          <p>状态提升，子1传父父传子2</p>
+          <h3 id="25-react-context-">25. React组件通信之context跨组件</h3>
+          <ol>
+            <li>创建context并从中解构出Provider,Consumer</li>
+          </ol>
+          <pre><code>const { Provider,Consumer } = React.createContext()
+</code></pre>
+          <ol start="2">
+            <li>用Provider包裹发送数据的组件，并给一个value属性</li>
+          </ol>
+          <pre><code>&lt;Provider value = {数据}&gt;
+</code></pre>
+          <ol start="3">
+            <li>用Consumer包裹接收数据的组件</li>
+          </ol>
+          <pre><code>&lt;Consumer&gt;{data=&gt;&lt;p&gt;{data}&lt;/p&gt;}&lt;/Consumer&gt;
+</code></pre>
+          <p>自行百度，Redux真香</p>
+          <h3 id="26-props-">26. Props深入</h3>
+          <ol>
+            <li>
+              <p>
+                <strong>children属性</strong
+                >：获取组件标签的子节点，children与props属性相同，可以为任意值（文本、react元素、组件甚至是函数）
+              </p>
+            </li>
+            <li>
+              <p>
+                <strong>props效验</strong>：封装公共组件时，约定添加props效验
+              </p>
+              <p>安装：yarn add prop-types</p>
+            </li>
+          </ol>
+          <pre><code>import PropTypes from &#39;prop-types&#39;
 class Greeting extends React.Component {
     render(){
         return (
@@ -597,15 +861,19 @@ class Greeting extends React.Component {
 Greeting.propTypes = {
     name: PropTypes.string.isRequired
 }
-</code></pre><ol start="3">
-<li><strong>props默认值</strong>：通过defaultProps定义props默认值</li>
-</ol>
-<pre><code>Greeting.defaultProps = {
+</code></pre>
+          <ol start="3">
+            <li>
+              <strong>props默认值</strong>：通过defaultProps定义props默认值
+            </li>
+          </ol>
+          <pre><code>Greeting.defaultProps = {
     name:&#39;John&#39;
 }
-</code></pre><h3 id="27-react-router">27. React-router</h3>
-<p>安装yarn add react-router-dom</p>
-<pre><code>import {
+</code></pre>
+          <h3 id="27-react-router">27. React-router</h3>
+          <p>安装yarn add react-router-dom</p>
+          <pre><code>import {
     BrowserRouter as Router,
     Switch,
     Route,
@@ -641,60 +909,75 @@ export default function App(){
     &lt;/Router&gt;
     )
 }
-</code></pre><p>精确匹配，Route组件添加exact属性</p>
-<h3 id="-28-hoc-">*28. 什么是高阶组件（HOC）</h3>
-<p>高阶组件是React中用于复用组件逻辑的一种技巧，高阶组件的参数为组件，返回值为新组件的函数</p>
-<h3 id="-29-hoc-">*29. 能用HOC做什么</h3>
-<ul>
-<li>代码复用，逻辑和引导抽象</li>
-<li>渲染劫持</li>
-<li>状态抽象与控制</li>
-<li>Props控制</li>
-</ul>
-<p>具体用法自行百度</p>
-<h3 id="-30-">*30. 什么是纯组件</h3>
-<p>React.,PureComponent，与React.Component很类似，区别在于纯组件内部自动实现了shouldComponentUpdate()这个钩子函数。内部通过分别比较前后两次的props和state值，来决定是否重新渲染组件。纯组件中的shouldComponentUpdate()仅作对象的浅层比较，但对于引用类型这种复杂的数据结构，只是比较对象引用地址是否相同</p>
-<h2 id="redux">Redux</h2>
-<h3 id="-1-">*1. 核心概念</h3>
-<p>store，state，action，reducer</p>
-<p>store保险箱记录所有的状态state</p>
-<p>需要改变的时候需要告诉dispatch要干什么action</p>
-<p>处理变化的reducer拿到state和action生成新的state</p>
-<h3 id="2-connect-">2. connect()</h3>
-<p>组件通过connect方法自动生成容器组件</p>
-<pre><code>import { connect } from &#39;react-redux&#39;
+</code></pre>
+          <p>精确匹配，Route组件添加exact属性</p>
+          <h3 id="-28-hoc-">*28. 什么是高阶组件（HOC）</h3>
+          <p>
+            高阶组件是React中用于复用组件逻辑的一种技巧，高阶组件的参数为组件，返回值为新组件的函数
+          </p>
+          <h3 id="-29-hoc-">*29. 能用HOC做什么</h3>
+          <ul>
+            <li>代码复用，逻辑和引导抽象</li>
+            <li>渲染劫持</li>
+            <li>状态抽象与控制</li>
+            <li>Props控制</li>
+          </ul>
+          <p>具体用法自行百度</p>
+          <h3 id="-30-">*30. 什么是纯组件</h3>
+          <p>
+            React.,PureComponent，与React.Component很类似，区别在于纯组件内部自动实现了shouldComponentUpdate()这个钩子函数。内部通过分别比较前后两次的props和state值，来决定是否重新渲染组件。纯组件中的shouldComponentUpdate()仅作对象的浅层比较，但对于引用类型这种复杂的数据结构，只是比较对象引用地址是否相同
+          </p>
+          <h2 id="redux">Redux</h2>
+          <h3 id="-1-">*1. 核心概念</h3>
+          <p>store，state，action，reducer</p>
+          <p>store保险箱记录所有的状态state</p>
+          <p>需要改变的时候需要告诉dispatch要干什么action</p>
+          <p>处理变化的reducer拿到state和action生成新的state</p>
+          <h3 id="2-connect-">2. connect()</h3>
+          <p>组件通过connect方法自动生成容器组件</p>
+          <pre><code>import { connect } from &#39;react-redux&#39;
 class List extends React.Component{}
 export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(List)
-</code></pre><h3 id="3-mapstatetoprops-">3. mapStateToProps()</h3>
-<p>它是一个函数，建立一个从（外部的）state对象到（组件的）props对象的映射关系</p>
-<pre><code>const mapStateToProps = (state) =&gt;{
+</code></pre>
+          <h3 id="3-mapstatetoprops-">3. mapStateToProps()</h3>
+          <p>
+            它是一个函数，建立一个从（外部的）state对象到（组件的）props对象的映射关系
+          </p>
+          <pre><code>const mapStateToProps = (state) =&gt;{
     return {
         ...state.listReducer
     }
 }
-</code></pre><p>这里的reducer单独做了个reducer.js，来管理所有组件的reducer</p>
-<pre><code>import { combineReducer } from &#39;redux&#39;
+</code></pre>
+          <p>这里的reducer单独做了个reducer.js，来管理所有组件的reducer</p>
+          <pre><code>import { combineReducer } from &#39;redux&#39;
 import homeReducer from &#39;../container/Home/reducer&#39;
 import listReducer from &#39;../container/List/reducer&#39;
 export default combineReducer({
     homeReducer,
     listReducer
 })
-</code></pre><h3 id="4-mapdispatchtoprops-">4. mapDispatchToProps()</h3>
-<p>建立组件的参数到store.dispatch方法的映射。它定义了哪些用户的操作应该当做Action，传给store</p>
-<pre><code>import {bindActionCreators} from &#39;redux&#39;
+</code></pre>
+          <h3 id="4-mapdispatchtoprops-">4. mapDispatchToProps()</h3>
+          <p>
+            建立组件的参数到store.dispatch方法的映射。它定义了哪些用户的操作应该当做Action，传给store
+          </p>
+          <pre><code>import {bindActionCreators} from &#39;redux&#39;
 import * as action from &#39;./action&#39;
 const mapDispatchToProps = dispatch =&gt; {
     return {
         Actions:bindActionCreators(action,dispatch)
     }
 }
-</code></pre><h3 id="5-provider-">5. &lt;Provider&gt;  组件</h3>
-<p>connect方法生成容器组件以后，需要让容器组件拿到state对象，才能生成UI组件的参数，React-redux提供Provider组件</p>
-<pre><code>import { Provider } from &#39;react-redux&#39;
+</code></pre>
+          <h3 id="5-provider-">5. &lt;Provider&gt; 组件</h3>
+          <p>
+            connect方法生成容器组件以后，需要让容器组件拿到state对象，才能生成UI组件的参数，React-redux提供Provider组件
+          </p>
+          <pre><code>import { Provider } from &#39;react-redux&#39;
 import { createStore } from &#39;redux&#39;
 import configureStore from &#39;./store&#39;
 
@@ -705,7 +988,8 @@ render(
     &lt;/Provider&gt;
     document.getElementById(&#39;root&#39;)
 )
-</code></pre><pre><code>// store.js
+</code></pre>
+          <pre><code>// store.js
 import { createStore，applyMiddleware } from &#39;redux&#39;
 import thunkMiddleware from &#39;redux-thunk&#39;
 import rootReducer from &#39;../config/reducer&#39;
@@ -716,8 +1000,9 @@ const configureStore = (initialState) =&gt; createStore(
     applyMiddleware(thunkMiddleware)
 )
 export default configureStore
-</code></pre><h3 id="6-action">6. action</h3>
-<pre><code>import request from &#39;../../utils/request&#39;
+</code></pre>
+          <h3 id="6-action">6. action</h3>
+          <pre><code>import request from &#39;../../utils/request&#39;
 import {api} from &#39;../../utils/api
 import {GET_DATA} from &#39;./constant&#39;
 
@@ -738,8 +1023,9 @@ export const getData = params =&gt; {
         })
     }
 }
-</code></pre><h3 id="7-reducer">7. reducer</h3>
-<pre><code>import {GET_DATA} from &#39;./constant&#39;
+</code></pre>
+          <h3 id="7-reducer">7. reducer</h3>
+          <pre><code>import {GET_DATA} from &#39;./constant&#39;
 const initialState = {
     data:[]
 }
@@ -757,9 +1043,10 @@ export default (state= initialState,action)=&gt;{
         }
     }
 }
-</code></pre><h2 id="axios">axios</h2>
-<h3 id="1-">1. 自己封装的请求方式</h3>
-<pre><code>// env.js 配置环境
+</code></pre>
+          <h2 id="axios">axios</h2>
+          <h3 id="1-">1. 自己封装的请求方式</h3>
+          <pre><code>// env.js 配置环境
 const stage = &#39;stage&#39; // 测试
 const prod = &#39;prod&#39; // 生产
 const web = &#39;web&#39; // h5
@@ -796,7 +1083,8 @@ const prefixAdaptive = env =&gt; {
 }
 export {env,STAGE_NAME,PROD_NAME,LOCAL_NAME,PREPOINT}
 export default prefixAdaptive
-</code></pre><pre><code>// request.js
+</code></pre>
+          <pre><code>// request.js
 import prefixAdaptive,{env} from &#39;../config/env&#39;
 const prefix=prefixAdaptive(env)
 
@@ -861,8 +1149,9 @@ const request = (type,path,parmas)=&gt;{
     }
 }
 export defaulr request
-</code></pre><h3 id="2-axios">2. axios</h3>
-<pre><code>import axios from &#39;axios&#39;
+</code></pre>
+          <h3 id="2-axios">2. axios</h3>
+          <pre><code>import axios from &#39;axios&#39;
 import {prefixAdapter} from &#39;../../config/env&#39;
 
 const API = axois.create({
@@ -901,9 +1190,10 @@ const post = (url,data)=&gt;{
     })
 }
 export default {get,post,API}
-</code></pre><h3 id="3-">3. 反向代理配置</h3>
-<p><strong>vue 2.x：在config/index.js中配置（待验证）</strong></p>
-<pre><code>// vue-cli 配置代理的配置参数：
+</code></pre>
+          <h3 id="3-">3. 反向代理配置</h3>
+          <p><strong>vue 2.x：在config/index.js中配置（待验证）</strong></p>
+          <pre><code>// vue-cli 配置代理的配置参数：
 proxyTable：{
     // 代理规则
     &#39;/api&#39;:{
@@ -917,8 +1207,14 @@ proxyTable：{
         pathRewrite:{&quot;^/api&quot;:&quot;&quot;}
     }
 }
-</code></pre><p><strong>vue 3.0 在vue-cli生成的项目根目录中创建一个vue.config.js（与package.json同级）</strong></p>
-<pre><code>// https://cli.vuejs.org/zh/config/#devserver-proxy
+</code></pre>
+          <p>
+            <strong
+              >vue 3.0
+              在vue-cli生成的项目根目录中创建一个vue.config.js（与package.json同级）</strong
+            >
+          </p>
+          <pre><code>// https://cli.vuejs.org/zh/config/#devserver-proxy
 
 module.exports = {
   // 选项...
@@ -950,12 +1246,13 @@ module.exports = {
       }
     }
   }
-</code></pre><p><strong>React：</strong></p>
-<ol>
-<li>安装 yarn add http-proxy-middleware</li>
-<li>在src中创建文件：setupProxy.js</li>
-</ol>
-<pre><code>const proxy = require(&#39;http-proxy-middleware&#39;)
+</code></pre>
+          <p><strong>React：</strong></p>
+          <ol>
+            <li>安装 yarn add http-proxy-middleware</li>
+            <li>在src中创建文件：setupProxy.js</li>
+          </ol>
+          <pre><code>const proxy = require(&#39;http-proxy-middleware&#39;)
 
 module.exports = function(app) {
     app.use(
@@ -968,8 +1265,9 @@ module.exports = function(app) {
         })
     )
 }
-</code></pre><h3 id="5-xmlhttprequest">5. XMLHttpRequest</h3>
-<pre><code>   //创建一个XMLHttpRequest对象
+</code></pre>
+          <h3 id="5-xmlhttprequest">5. XMLHttpRequest</h3>
+          <pre><code>   //创建一个XMLHttpRequest对象
    var xhr = new XMLHttpRequest()
    //设置请求行(post方式)
    xhr.open(&#39;post&#39;, 请求地址)
@@ -992,141 +1290,229 @@ module.exports = function(app) {
               xhr.responseText
            }
    }
-</code></pre><h2 id="math-array-string-">Math，Array，String的常用方法</h2>
-<h3 id="1-math">1. Math</h3>
-<p><strong>abs(X)</strong>：返回X的绝对值</p>
-<p><strong>ceil(X)</strong>：向上取整；floor(X)：向下取整</p>
-<p><strong>round(X)</strong>：四舍五入</p>
-<p><strong>max(X，Y)</strong>：比较最大值；min(X，Y)：比较最小值</p>
-<p><strong>random()</strong>：随机数，返回0~1之间的数，一般需要*数值</p>
-<h3 id="2-array">2. Array</h3>
-<p><strong>arr.concat(x,y,z.....)</strong>：连接两个或多个数组，参数可为元素或者数组，返回一个新的数组，<strong>不改变</strong>原数组</p>
-<p><strong>arr.join(x)</strong>：将数组拼成字符串，参数为分隔符</p>
-<p><strong>arr.pop()</strong>：删除数组的最后一个元素，返回删除后的数组，<strong>不改变</strong>原数组</p>
-<p><strong>arr.shift()</strong>：删除数组的第一个元素，返回第一个元素，<strong>改变</strong>原数组</p>
-<p><strong>arr.push(x,y,z......)</strong>：向数组的末尾添加一个或多个元素，返回添加后的数组长度，<strong>改变</strong>原数组</p>
-<p><strong>arr.unshift(x,y,z......)</strong>：向数组的开头添加一个或多个元素，返回添加后的数组长度，<strong>改变</strong>原数组</p>
-<p><strong>arr.reverse()</strong>：颠倒数组，<strong>改变</strong>原数组</p>
-<p><strong>arr.sort(x)</strong>：排序数组，参数为排序的函数，不传会有默认排序按字母顺序，<strong>改变</strong>原数组</p>
-<p><strong>arr.slice(start,end)</strong>：从数组中截取元素，</p>
-<p>参数：start，必需，从何处开始截取，负数从尾部开始截</p>
-<p>​       end，在何处结束，不写，则截取数组结束的全部元素</p>
-<p>返回一个由截取下来的元素组成的新数组，<strong>不改变</strong>原数组</p>
-<p><strong>arr.splice(index,howmany,item1,....itemx)</strong>：在数组的某个位置添加/删除元素</p>
-<p>参数：index，必需，添加/删除元素的位置，负数从尾部开始</p>
-<p>​       howmany，必需，删除元素数量，为0，不删除</p>
-<p>​       item1,...itemx，可选，向数组中添加新的元素</p>
-<p>返回值：被删除项目的新数组，如果有的话。<strong>改变</strong>原数组</p>
-<p><strong>arr.indexOf(x)</strong>：查找某个元素在数组中第一次出现的位置，返回值为下标，为-1说明不存在</p>
-<p><strong>arr.lastIndexOf()</strong>：查找某个元素在数组最后一次出现的位置，返回值为下标，为-1说明不存在</p>
-<h3 id="3-string">3. String</h3>
-<p><strong>string.trim()</strong>：删除字符串两边的空格</p>
-<p><strong>string.toUpperCase()</strong>：大写  <strong>string.toLowerCase()</strong>：小写</p>
-<p><strong>string.slice(start,end)</strong>：提取字符串的某一部分，包含start，不包含end</p>
-<p>参数：下标，为负数，从尾部开始</p>
-<p>返回一个新的字符串为截取部分</p>
-<p><strong>string.substring(start,end)</strong>：提取两个下标之间的字符，包含start，不包含end</p>
-<p>参数：start，必需，非负整数。end，可选，非负整数</p>
-<p>返回一个新的字符串</p>
-<p><strong>string.substr(start,length)</strong>：截取start下标开始指定数目的字符</p>
-<p>参数：start，必需，为负数，从尾部开始，length，可选，数值</p>
-<p>返回一个新的字符串，从string的start处开始length个长度的字符串</p>
-<p><strong>string.split(separator,howmany)</strong>：将字符串分割成数组</p>
-<p>参数：separator，必需，字符串或者正则表达式。</p>
-<p>​        howmany：可选，返回数组的最大长度</p>
-<p>返回一个新的数组</p>
-<p><strong>string.replace(regexp/substr,replacement)</strong>：用一些字符替换字符串中另一些字符</p>
-<p>参数：regexp/substr，必需，检索的对象，字符串/正则表达式</p>
-<p>​        replacement，必需，替换的文本</p>
-<p>返回替换后的新的字符串</p>
-<h2 id="flex-">flex布局（真香布局）</h2>
-<h3 id="1-display-flex">1. display:flex</h3>
-<p>盒子设置了display：flex之后，这个盒子就有了主轴和侧轴的概念，子元素默认在主轴开始的位置排列</p>
-<h3 id="2-flex-direction">2. flex-direction</h3>
-<p>修改主轴的方向</p>
-<p>参数：row：默认值，水平向右；row-reverse：水平向左；column：垂直向下；column-reverse：垂直向上 </p>
-<p><strong>真香布局</strong>：</p>
-<ol>
-<li>当我们需要竖向排列盒子时，设置成column。</li>
-<li>实现头部底部固定定位，中间盒子展示内容。可以使用flex-direction:column代替头部底部的固定定位（曾遇到过iPhone在使用flex布局与底部固定定位时的BUG。然后用flex布局代替固定定位）</li>
-</ol>
-<h3 id="3-justify-content">3. justify-content</h3>
-<p>设置子元素在主轴上的排列方式</p>
-<p>参数：flex-start：默认，在主轴开始的位置排列；flex-end：在主轴结尾的位置排列；center：在中间排列；space-around：盒子均分排布，带左右空隙；space-between：盒子均分排布，左右贴边 </p>
-<p><strong>真香布局</strong>：space-between space-around谁用谁知道</p>
-<h3 id="4-align-items">4. align-items</h3>
-<p>设置侧轴的排列方式（单行）</p>
-<p>参数：flex-start：在侧轴顶部的位置排列（贴着顶部）； flex-end：在侧轴底部的位置排列（贴着底部）； center：中间；stretch：子盒子没有高度时默认拉伸（上下） </p>
-<p><strong>真香布局</strong>：垂直居中 使用center</p>
-<h3 id="5-flex-wrap">5. flex-wrap</h3>
-<p>设置子元素是否换行</p>
-<p>参数：nowrap不换行 wrap换行</p>
-<p><strong>真香布局</strong>：正常都是不换行，但是换行可以实现n宫格。子元素给好宽度比 </p>
-<h3 id="6-align-content">6. align-content</h3>
-<p>设置子元素在侧轴的排列方式（多行）</p>
-<p>参数：flex-start：默认，在侧轴开始的位置排列；flex-end：在侧轴结尾的位置排列；center：在中间排列；space-around：盒子均分排布，带上下空隙；space-between：盒子均分排布，上下贴边；stretch：拉伸，不设置高度的情况下 </p>
-<p>用的少</p>
-<h3 id="7-flex">7. flex</h3>
-<p>子元素设置的，分配在主轴的空间 参数为数字</p>
-<h3 id="8-order">8. order</h3>
-<p>子元素设置的，排列顺序，默认0，数值越小，顺序越靠前</p>
-<h3 id="9-align-self">9. align-self</h3>
-<p>子元素设置的，设置单个子元素在侧轴的排列方式</p>
-<p>参数：flex-start：在侧轴顶部的位置排列（贴着顶部）； flex-end：在侧轴底部的位置排列（贴着底部）； center：中间；stretch：子盒子没有高度时默认拉伸（上下） </p>
-<h2 id="git">git</h2>
-<h3 id="1-">1. 常用指令</h3>
-<p><strong>git config --global user.name+作者名</strong></p>
-<p><strong>git config --global user.email+邮箱</strong></p>
-<p>每台电脑执行一次，设置</p>
-<p><strong>git add</strong>：git管理文件</p>
-<p><strong>git commit -m &quot;描述&quot;</strong>：将提交内容生成版本存到库中</p>
-<p><strong>git commit --amend</strong>：修改commit描述，英文输入法下i进入编辑，编辑好后esc保存，：q确定（：wq！强制确定）</p>
-<p><strong>git fetch --all</strong> </p>
-<p><strong>git pull --rebase origin 分支</strong></p>
-<p><strong>git push</strong></p>
-<p><strong>git status</strong>：查看当前项目状态</p>
-<h3 id="2-">2. 回滚版本</h3>
-<p><strong>git log</strong>：查看以往提交版本信息</p>
-<p><strong>git reflog</strong>：查看所有日志</p>
-<p><strong>git reset --hard 版本号</strong>：回滚到指定版本</p>
-<h3 id="3-git-diff-">3. git查看diff不同</h3>
-<p><strong>git diff</strong>：工作区与暂存区不同</p>
-<p><strong>git diff -cache</strong>：暂存区与库存区的不同</p>
-<p><strong>git diff HEAD</strong>：工作区与库存区的不同</p>
-<p><strong>git diff 版本号1 版本号2</strong>：两个版本之间的不同</p>
-<h3 id="4-git-">4. git分支</h3>
-<p><strong>git branch</strong>：查看分支信息</p>
-<p><strong>git checkout 分支名</strong>：切换分支</p>
-<p><strong>git checkout -b 分支名</strong>：新建并切换到新分支</p>
-<p><strong>git merge 分支B</strong>：在分支A上把分支B合并过来</p>
-<p><strong>git branch -d 分支名</strong>：删除分支</p>
-<h3 id="5-git-">5. git与远程仓库</h3>
-<p><strong>git clone</strong>：克隆代码</p>
-<p><strong>git remote add 别名 仓库地址</strong>：用别名替代仓库地址</p>
-<p><strong>git remote</strong>：查看所有别名</p>
-<p><strong>git remote get-url 别名</strong>：获取别名的仓库地址</p>
-<p><strong>git remote set-url 别名 仓库地址</strong>：仓库地址设置别名</p>
-<h3 id="6-git-">6. git忽略文件</h3>
-<p>开发项目的时候我们可能有些文件、文件夹不需要git管理。在git add之前，新建一个.gitignore文件，在.gitignore文件里写不需要git管理的文件，文件夹名 </p>
-
-          	</article>
-        </div>
-		</div>
+</code></pre>
+          <h2 id="math-array-string-">Math，Array，String的常用方法</h2>
+          <h3 id="1-math">1. Math</h3>
+          <p><strong>abs(X)</strong>：返回X的绝对值</p>
+          <p><strong>ceil(X)</strong>：向上取整；floor(X)：向下取整</p>
+          <p><strong>round(X)</strong>：四舍五入</p>
+          <p><strong>max(X，Y)</strong>：比较最大值；min(X，Y)：比较最小值</p>
+          <p>
+            <strong>random()</strong>：随机数，返回0~1之间的数，一般需要*数值
+          </p>
+          <h3 id="2-array">2. Array</h3>
+          <p>
+            <strong>arr.concat(x,y,z.....)</strong
+            >：连接两个或多个数组，参数可为元素或者数组，返回一个新的数组，<strong>不改变</strong>原数组
+          </p>
+          <p><strong>arr.join(x)</strong>：将数组拼成字符串，参数为分隔符</p>
+          <p>
+            <strong>arr.pop()</strong
+            >：删除数组的最后一个元素，返回删除后的数组，<strong>不改变</strong>原数组
+          </p>
+          <p>
+            <strong>arr.shift()</strong
+            >：删除数组的第一个元素，返回第一个元素，<strong>改变</strong>原数组
+          </p>
+          <p>
+            <strong>arr.push(x,y,z......)</strong
+            >：向数组的末尾添加一个或多个元素，返回添加后的数组长度，<strong>改变</strong>原数组
+          </p>
+          <p>
+            <strong>arr.unshift(x,y,z......)</strong
+            >：向数组的开头添加一个或多个元素，返回添加后的数组长度，<strong>改变</strong>原数组
+          </p>
+          <p>
+            <strong>arr.reverse()</strong
+            >：颠倒数组，<strong>改变</strong>原数组
+          </p>
+          <p>
+            <strong>arr.sort(x)</strong
+            >：排序数组，参数为排序的函数，不传会有默认排序按字母顺序，<strong>改变</strong>原数组
+          </p>
+          <p><strong>arr.slice(start,end)</strong>：从数组中截取元素，</p>
+          <p>参数：start，必需，从何处开始截取，负数从尾部开始截</p>
+          <p>​ end，在何处结束，不写，则截取数组结束的全部元素</p>
+          <p>
+            返回一个由截取下来的元素组成的新数组，<strong>不改变</strong>原数组
+          </p>
+          <p>
+            <strong>arr.splice(index,howmany,item1,....itemx)</strong
+            >：在数组的某个位置添加/删除元素
+          </p>
+          <p>参数：index，必需，添加/删除元素的位置，负数从尾部开始</p>
+          <p>​ howmany，必需，删除元素数量，为0，不删除</p>
+          <p>​ item1,...itemx，可选，向数组中添加新的元素</p>
+          <p>
+            返回值：被删除项目的新数组，如果有的话。<strong>改变</strong>原数组
+          </p>
+          <p>
+            <strong>arr.indexOf(x)</strong
+            >：查找某个元素在数组中第一次出现的位置，返回值为下标，为-1说明不存在
+          </p>
+          <p>
+            <strong>arr.lastIndexOf()</strong
+            >：查找某个元素在数组最后一次出现的位置，返回值为下标，为-1说明不存在
+          </p>
+          <h3 id="3-string">3. String</h3>
+          <p><strong>string.trim()</strong>：删除字符串两边的空格</p>
+          <p>
+            <strong>string.toUpperCase()</strong>：大写
+            <strong>string.toLowerCase()</strong>：小写
+          </p>
+          <p>
+            <strong>string.slice(start,end)</strong
+            >：提取字符串的某一部分，包含start，不包含end
+          </p>
+          <p>参数：下标，为负数，从尾部开始</p>
+          <p>返回一个新的字符串为截取部分</p>
+          <p>
+            <strong>string.substring(start,end)</strong
+            >：提取两个下标之间的字符，包含start，不包含end
+          </p>
+          <p>参数：start，必需，非负整数。end，可选，非负整数</p>
+          <p>返回一个新的字符串</p>
+          <p>
+            <strong>string.substr(start,length)</strong
+            >：截取start下标开始指定数目的字符
+          </p>
+          <p>参数：start，必需，为负数，从尾部开始，length，可选，数值</p>
+          <p>返回一个新的字符串，从string的start处开始length个长度的字符串</p>
+          <p>
+            <strong>string.split(separator,howmany)</strong>：将字符串分割成数组
+          </p>
+          <p>参数：separator，必需，字符串或者正则表达式。</p>
+          <p>​ howmany：可选，返回数组的最大长度</p>
+          <p>返回一个新的数组</p>
+          <p>
+            <strong>string.replace(regexp/substr,replacement)</strong
+            >：用一些字符替换字符串中另一些字符
+          </p>
+          <p>参数：regexp/substr，必需，检索的对象，字符串/正则表达式</p>
+          <p>​ replacement，必需，替换的文本</p>
+          <p>返回替换后的新的字符串</p>
+          <h2 id="flex-">flex布局（真香布局）</h2>
+          <h3 id="1-display-flex">1. display:flex</h3>
+          <p>
+            盒子设置了display：flex之后，这个盒子就有了主轴和侧轴的概念，子元素默认在主轴开始的位置排列
+          </p>
+          <h3 id="2-flex-direction">2. flex-direction</h3>
+          <p>修改主轴的方向</p>
+          <p>
+            参数：row：默认值，水平向右；row-reverse：水平向左；column：垂直向下；column-reverse：垂直向上
+          </p>
+          <p><strong>真香布局</strong>：</p>
+          <ol>
+            <li>当我们需要竖向排列盒子时，设置成column。</li>
+            <li>
+              实现头部底部固定定位，中间盒子展示内容。可以使用flex-direction:column代替头部底部的固定定位（曾遇到过iPhone在使用flex布局与底部固定定位时的BUG。然后用flex布局代替固定定位）
+            </li>
+          </ol>
+          <h3 id="3-justify-content">3. justify-content</h3>
+          <p>设置子元素在主轴上的排列方式</p>
+          <p>
+            参数：flex-start：默认，在主轴开始的位置排列；flex-end：在主轴结尾的位置排列；center：在中间排列；space-around：盒子均分排布，带左右空隙；space-between：盒子均分排布，左右贴边
+          </p>
+          <p><strong>真香布局</strong>：space-between space-around谁用谁知道</p>
+          <h3 id="4-align-items">4. align-items</h3>
+          <p>设置侧轴的排列方式（单行）</p>
+          <p>
+            参数：flex-start：在侧轴顶部的位置排列（贴着顶部）；
+            flex-end：在侧轴底部的位置排列（贴着底部）；
+            center：中间；stretch：子盒子没有高度时默认拉伸（上下）
+          </p>
+          <p><strong>真香布局</strong>：垂直居中 使用center</p>
+          <h3 id="5-flex-wrap">5. flex-wrap</h3>
+          <p>设置子元素是否换行</p>
+          <p>参数：nowrap不换行 wrap换行</p>
+          <p>
+            <strong>真香布局</strong
+            >：正常都是不换行，但是换行可以实现n宫格。子元素给好宽度比
+          </p>
+          <h3 id="6-align-content">6. align-content</h3>
+          <p>设置子元素在侧轴的排列方式（多行）</p>
+          <p>
+            参数：flex-start：默认，在侧轴开始的位置排列；flex-end：在侧轴结尾的位置排列；center：在中间排列；space-around：盒子均分排布，带上下空隙；space-between：盒子均分排布，上下贴边；stretch：拉伸，不设置高度的情况下
+          </p>
+          <p>用的少</p>
+          <h3 id="7-flex">7. flex</h3>
+          <p>子元素设置的，分配在主轴的空间 参数为数字</p>
+          <h3 id="8-order">8. order</h3>
+          <p>子元素设置的，排列顺序，默认0，数值越小，顺序越靠前</p>
+          <h3 id="9-align-self">9. align-self</h3>
+          <p>子元素设置的，设置单个子元素在侧轴的排列方式</p>
+          <p>
+            参数：flex-start：在侧轴顶部的位置排列（贴着顶部）；
+            flex-end：在侧轴底部的位置排列（贴着底部）；
+            center：中间；stretch：子盒子没有高度时默认拉伸（上下）
+          </p>
+          <h2 id="git">git</h2>
+          <h3 id="1-">1. 常用指令</h3>
+          <p><strong>git config --global user.name+作者名</strong></p>
+          <p><strong>git config --global user.email+邮箱</strong></p>
+          <p>每台电脑执行一次，设置</p>
+          <p><strong>git add</strong>：git管理文件</p>
+          <p>
+            <strong>git commit -m &quot;描述&quot;</strong
+            >：将提交内容生成版本存到库中
+          </p>
+          <p>
+            <strong>git commit --amend</strong
+            >：修改commit描述，英文输入法下i进入编辑，编辑好后esc保存，：q确定（：wq！强制确定）
+          </p>
+          <p><strong>git fetch --all</strong></p>
+          <p><strong>git pull --rebase origin 分支</strong></p>
+          <p><strong>git push</strong></p>
+          <p><strong>git status</strong>：查看当前项目状态</p>
+          <h3 id="2-">2. 回滚版本</h3>
+          <p><strong>git log</strong>：查看以往提交版本信息</p>
+          <p><strong>git reflog</strong>：查看所有日志</p>
+          <p><strong>git reset --hard 版本号</strong>：回滚到指定版本</p>
+          <h3 id="3-git-diff-">3. git查看diff不同</h3>
+          <p><strong>git diff</strong>：工作区与暂存区不同</p>
+          <p><strong>git diff -cache</strong>：暂存区与库存区的不同</p>
+          <p><strong>git diff HEAD</strong>：工作区与库存区的不同</p>
+          <p><strong>git diff 版本号1 版本号2</strong>：两个版本之间的不同</p>
+          <h3 id="4-git-">4. git分支</h3>
+          <p><strong>git branch</strong>：查看分支信息</p>
+          <p><strong>git checkout 分支名</strong>：切换分支</p>
+          <p><strong>git checkout -b 分支名</strong>：新建并切换到新分支</p>
+          <p><strong>git merge 分支B</strong>：在分支A上把分支B合并过来</p>
+          <p><strong>git branch -d 分支名</strong>：删除分支</p>
+          <h3 id="5-git-">5. git与远程仓库</h3>
+          <p><strong>git clone</strong>：克隆代码</p>
+          <p>
+            <strong>git remote add 别名 仓库地址</strong>：用别名替代仓库地址
+          </p>
+          <p><strong>git remote</strong>：查看所有别名</p>
+          <p><strong>git remote get-url 别名</strong>：获取别名的仓库地址</p>
+          <p>
+            <strong>git remote set-url 别名 仓库地址</strong>：仓库地址设置别名
+          </p>
+          <h3 id="6-git-">6. git忽略文件</h3>
+          <p>
+            开发项目的时候我们可能有些文件、文件夹不需要git管理。在git
+            add之前，新建一个.gitignore文件，在.gitignore文件里写不需要git管理的文件，文件夹名
+          </p>
+        </article>
+      </div>
+    </div>
   </body>
 </html>
 <script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
-<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script
+  type="text/javascript"
+  src="toc/js/jquery.ztree.all-3.5.min.js"
+></script>
 <script type="text/javascript" src="toc/js/ztree_toc.js"></script>
 <script type="text/javascript" src="toc_conf.js"></script>
 
-<SCRIPT type="text/javascript" >
-<!--
-$(document).ready(function(){
-    var css_conf = eval(markdown_panel_style);
+<script type="text/javascript">
+  $(document).ready(function () {
+    var css_conf = eval(markdown_panel_style)
     $('#readme').css(css_conf)
-    
-    var conf = eval(jquery_ztree_toc_opts);
-		$('#tree').ztree_toc(conf);
-});
-//-->
-</SCRIPT>
+
+    var conf = eval(jquery_ztree_toc_opts)
+    $('#tree').ztree_toc(conf)
+  })
+</script>
