@@ -1,7 +1,7 @@
 <html>
   <head>
 	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title>i5ting_ztree_toc:index</title>
+    <title>前端知识</title>
 		<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css"/>
 		<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css"/>
 		<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css"/>
@@ -1689,6 +1689,27 @@ new myPromise((resolve, reject) =&gt; {
 <p><strong>git remote set-url 别名 仓库地址</strong>：仓库地址设置别名</p>
 <h2 id="6-git-">6. git 忽略文件</h2>
 <p>开发项目的时候我们可能有些文件、文件夹不需要 git 管理。在 git add 之前，新建一个.gitignore 文件，在.gitignore 文件里写不需要 git 管理的文件，文件夹名</p>
+<h2 id='7-'>7. 本地与GitHub</h2>
+<p>除了<strong>git config</strong>配置外，本地要与github关联上，还需要设置ssh密码登录</p>
+<p>git支持多种数据传输协议：</p>
+<ul>
+  <li><p>https协议：需要输入用户名密码</p></li>
+  <li><p>ssh协议：可以配置免密码登录</p></li>
+</ul>
+<p>ssh免密码登录配置</p>
+<ul>
+  <li><p>1. git bash 敲指令<code>ssh-keygen -t rsa</code></p></li>
+  <li><p>2. 在<code>C:\用户\用户名\</code>会创建一个<code>.ssh</code>文件夹</p></li>
+  <li><p>3. 文件夹里有两个文件：私钥：<code>id_rsa</code>公钥：<code>id_rsa.pub</code></p></li>
+  <li><p>4. 获取SSH key 在公钥里，文件打不开。可以在git bash里进入<code>.ssh</code>目录<code>cat id_rsa.pub</code>获取公钥</p></li>
+  <li><p>5. <code>github->setting->SSH and GPG keys</code>，创建SSH key，把公钥粘贴进去</p></li>
+  <li><p>6. 拿到git的仓库地址，pull或者push 或者其他方法认证是否成功</p></li>
+</ul>
+<p>本地简单的静态页面发布到github，通过简单的代理，访问</p>
+<p>这个页面没有请求，只是静态页面</p>
+<p>github创建项目，项目名以<code>github名.github.io</code>命名</p>
+<p>然后push代码即可</p>
+
 <h1 id="webpack">Webpack</h1>
 <h2 id="1-">1. 介绍</h2>
 <p>webpack 模块化打包工具</p>
@@ -3213,7 +3234,7 @@ this.$echarts.registerMap(name, geoJSON);
 <script type="text/javascript" src="toc_conf.js"></script>
 
 <SCRIPT type="text/javascript" >
-<!--
+// <!--
 $(document).ready(function(){
     var css_conf = eval(markdown_panel_style);
     $('#readme').css(css_conf)
